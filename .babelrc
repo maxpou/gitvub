@@ -12,7 +12,15 @@
   "env": {
     "test": {
       "presets": ["env", "stage-2"],
-      "plugins": ["istanbul"]
+      "plugins": [
+        "dynamic-import-node",
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "@": "./src"
+          }
+        }]
+      ]
     }
   }
 }
