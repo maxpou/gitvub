@@ -17,21 +17,10 @@
 Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and follow [his file structure](http://vuejs-templates.github.io/webpack/structure.html).
 
 
-## Notes
+## Notes
 
 * Code follow [StandarJS](https://standardjs.com/) rules;
 * API test use [dynamic import (Stage 3)](https://github.com/tc39/proposal-dynamic-import)
-
-## TODO
-
-- [ ] feature: load more repos use Link HTTP header
-  ```
-Link:<https://api.github.com/user/491848/repos?page=2>; rel="next",<https://api.github.com/user/491848/repos?page=6>; rel="last"
-  ```
-- [ ] add CI (with Travis) / CD to gh-
-- [ ] add data in repo detail view
-- [ ] sync [vuex <=> router](https://github.com/vuejs/vuex-router-sync)
-- [ ] url key through: ?client_id=2c1a8680d4e497d52a52&client_secret=9c64d4b112a250806911ed8ba9c3a76e1afbfab2
 
 
 ## Commands
