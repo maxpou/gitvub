@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+/**
+ * @param {string} username
+ * @return {Promise<Object[]>} array of repositories
+ */
 export function getRepositories (username) {
   const cacheKey = `users/${username}/repos`
 
@@ -14,6 +18,11 @@ export function getRepositories (username) {
   })
 }
 
+/**
+ * @param {string} username
+ * @param {string} repository
+ * @return {Promise<Object[]>} array of repositories
+ */
 export function getRepositoryLanguage (username, repository) {
   const cacheKey = `repos/${username}/${repository}/language`
 

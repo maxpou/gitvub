@@ -21,6 +21,7 @@ Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and 
 
 * Code follow [StandarJS](https://standardjs.com/) rules;
 * API test use [dynamic import (Stage 3)](https://github.com/tc39/proposal-dynamic-import)
+* API calls are cached in sessionStorage
 
 
 ## Commands
