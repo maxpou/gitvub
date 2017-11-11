@@ -15,14 +15,14 @@
       </div>
 
       <div class="repo-detail col-6 col-md-3">
-        <menu-user-repo-list/>
+        <menu-user-repo-list :repositories="currentUserRepositories"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import MenuNavBar from '@/components/MenuNavBar'
 import MenuUserRepoList from '@/components/MenuUserRepoList'
 
@@ -38,6 +38,10 @@ export default {
       currentRepository: state => state.repositories.currentRepository,
       repositoryDetail: state => state.repositories.repositoryDetail
     }),
+    ...mapGetters([
+      'currentUserRepositories'
+    ]),
+    // Sum total bytes per language
     totalBytesLanguages () {
       return Object.values(this.repositoryDetail).reduce((accumulator, current) => {
         return accumulator + current
@@ -49,10 +53,12 @@ export default {
   },
   methods: {
     ...mapActions([
-      'loadRepositoryDetail'
+      'loadRepositoryDetail',
+      'loadUserRepositories'
     ]),
     fetchData () {
       this.loadRepositoryDetail(this.$route.params)
+      this.loadUserRepositories(this.$route.params.user)
     },
     bytesPerLanguagePercentage (nbBytes, total) {
       return Math.round(nbBytes / total * 100)

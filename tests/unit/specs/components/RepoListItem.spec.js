@@ -9,7 +9,10 @@ describe('RepoListItem.vue', () => {
       propsData: {
         repository: {
           name: 'test-repo',
-          description: 'i\'m a test repo'
+          description: 'i\'m a test repo',
+          owner: {
+            login: 'bob'
+          }
         }
       }
     })

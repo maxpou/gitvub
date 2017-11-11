@@ -12,7 +12,10 @@ const state = {
 
 const getters = {
   currentUserRepositories: (state) => {
-    return state.users[state.currentUser].repos || []
+    if (state.users[state.currentUser] === undefined) {
+      return []
+    }
+    return state.users[state.currentUser].repos
   }
 }
 
