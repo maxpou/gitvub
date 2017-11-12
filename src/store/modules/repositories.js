@@ -5,7 +5,7 @@ import Vue from 'vue'
 // initial state
 const state = {
   currentUser: '',
-  currentRepository: '',
+  currentRepositoryName: '',
   users: {},
   repositoryDetail: {}
 }
@@ -13,9 +13,12 @@ const state = {
 const getters = {
   currentUserRepositories: (state) => {
     if (state.users[state.currentUser] === undefined) {
-      return []
+      return {}
     }
     return state.users[state.currentUser].repos
+  },
+  currentRepository: (state, getters) => {
+    return getters.currentUserRepositories[state.currentRepositoryName]
   }
 }
 
@@ -53,7 +56,7 @@ const mutations = {
     if (state.currentUser !== user) {
       state.currentUser = user
     }
-    state.currentRepository = repository
+    state.currentRepositoryName = repository
     state.repositoryDetail = {}
   },
   [types.RECEIVE_REPOSITORY_DETAIL] (state, data) {

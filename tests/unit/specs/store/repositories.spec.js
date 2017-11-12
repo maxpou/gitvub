@@ -85,15 +85,15 @@ describe('repositories store - mutations', () => {
   it('FETCH_REPO_DETAIL', () => {
     const state = {
       currentUser: 'maxpou',
-      currentRepository: 'dotfiles',
+      currentRepositoryName: 'dotfiles',
       repositoryDetail: {}
     }
 
     repositoriesStore.mutations.FETCH_REPO_DETAIL(state, {user: 'yyx990803', repository: 'benchmark'})
 
     const expected = {
-      currentRepository: 'benchmark',
       currentUser: 'yyx990803',
+      currentRepositoryName: 'benchmark',
       repositoryDetail: {}
     }
     expect(state).toEqual(expected)

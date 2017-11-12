@@ -3,15 +3,49 @@
     <menu-nav-bar/>
     <div class="row">
       <div class="menu-right col-12 col-md-9">
-        <h2><router-link :to="{ name: 'RepoList', params: { user: currentUser }}">{{ currentUser }}</router-link> / {{ currentRepository }}</h2>
 
-        <p>Languages:</p>
-        <ul v-if="totalBytesLanguages">
-          <li v-for="(bytes, language) in repositoryDetail" class="list-unstyled">
-            {{ language }}: {{ bytesPerLanguagePercentage(bytes, totalBytesLanguages) }}%
-          </li>
-        </ul>
-        <p v-else class="text-muted">No language found.</p>
+        <div class="jumbotron">
+          <h2><router-link :to="{ name: 'RepoList', params: { user: currentUser }}">{{ currentUser }}</router-link> / {{ currentRepositoryName }}</h2>
+          <p class="lead" v-if="currentRepository"><em>{{ currentRepository.description}}</em></p>
+        </div>
+
+        <div class="detail" v-if="currentRepository">
+          <table class="table borderless">
+            <tr>
+              <td>Stargazers</td>
+              <td>{{ currentRepository.stargazers_count }}</td>
+            </tr>
+            <tr>
+              <td>Forks</td>
+              <td>{{ currentRepository.forks_count}}</td>
+            </tr>
+            <tr>
+              <td>Issues</td>
+              <td>{{ currentRepository.open_issues_count}}</td>
+            </tr>
+            <tr>
+              <td>Watchers</td>
+              <td>{{ currentRepository.watchers_count}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="detail" v-if="currentRepository">
+          <table class="table table-striped borderless-top">
+            <tr>
+              <th scope="col" colspan="2">Languages</th>
+            </tr>
+            <tbody v-if="totalBytesLanguages">
+              <tr v-for="(bytes, language) in repositoryDetail" :key="language">
+                <td>{{ language }}</td>
+                <td>{{ bytesPerLanguagePercentage(bytes, totalBytesLanguages) }}%</td>
+              </tr>
+            </tbody>
+            <tr v-else>
+              <td colspan="2"><em>No language found.</em></td>
+            </tr>
+          </table>
+        </div>
       </div>
 
       <div class="repo-detail col-6 col-md-3">
@@ -27,7 +61,7 @@ import MenuNavBar from '@/components/MenuNavBar'
 import MenuUserRepoList from '@/components/MenuUserRepoList'
 
 export default {
-  name: 'RepoListItem',
+  name: 'RepoDetail',
   components: {
     MenuNavBar,
     MenuUserRepoList
@@ -35,11 +69,12 @@ export default {
   computed: {
     ...mapState({
       currentUser: state => state.repositories.currentUser,
-      currentRepository: state => state.repositories.currentRepository,
+      currentRepositoryName: state => state.repositories.currentRepositoryName,
       repositoryDetail: state => state.repositories.repositoryDetail
     }),
     ...mapGetters([
-      'currentUserRepositories'
+      'currentUserRepositories',
+      'currentRepository'
     ]),
     // Sum total bytes per language
     totalBytesLanguages () {
@@ -69,3 +104,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.borderless td,
+.borderless th {
+  border: none;
+}
+.borderless-top th {
+  border-top: 0;
+}
+</style>
