@@ -21,7 +21,8 @@ export function getRepositories (username) {
 /**
  * @param {string} username
  * @param {string} repository
- * @return {Promise<Object[]>} array of repositories
+ * @return {Promise<Object>} a key/value object (key=language / value=bytes of code per language)
+ * @see {@link https://developer.github.com/v3/repos/#list-languages}
  */
 export function getRepositoryLanguage (username, repository) {
   const cacheKey = `repos/${username}/${repository}/language`
@@ -31,6 +32,26 @@ export function getRepositoryLanguage (username, repository) {
   }
 
   const url = `${process.env.GITHUB_URL}/repos/${username}/${repository}/languages`
+  return axios.get(url).then(response => {
+    sessionStorage.setItem(cacheKey, JSON.stringify(response.data))
+    return response.data
+  })
+}
+
+/**
+ * @param {string} username
+ * @param {string} repository
+ * @return {Promise<Object>} repository detail
+ * @see {@link https://developer.github.com/v3/repos/contents/}
+ */
+export function getRepositoryReadme (username, repository) {
+  const cacheKey = `repos/${username}/${repository}/readme`
+
+  if (sessionStorage.getItem(cacheKey)) {
+    return Promise.resolve(JSON.parse(sessionStorage.getItem(cacheKey)))
+  }
+
+  const url = `${process.env.GITHUB_URL}/repos/${username}/${repository}/readme`
   return axios.get(url).then(response => {
     sessionStorage.setItem(cacheKey, JSON.stringify(response.data))
     return response.data

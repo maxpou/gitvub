@@ -9,6 +9,8 @@
           <p class="lead" v-if="currentRepository"><em>{{ currentRepository.description}}</em></p>
         </div>
 
+        <div v-if="repositoryDetail.readme" v-html="readmeMarkdown" class="detail readme"></div>
+
         <div class="detail" v-if="currentRepository">
           <table class="table borderless">
             <tr>
@@ -36,7 +38,7 @@
               <th scope="col" colspan="2">Languages</th>
             </tr>
             <tbody v-if="totalBytesLanguages">
-              <tr v-for="(bytes, language) in repositoryDetail" :key="language">
+              <tr v-for="(bytes, language) in repositoryDetail.languages" :key="language">
                 <td>{{ language }}</td>
                 <td>{{ bytesPerLanguagePercentage(bytes, totalBytesLanguages) }}%</td>
               </tr>
@@ -59,6 +61,7 @@
 import { mapState, mapActions, mapGetters } from 'vuex'
 import MenuNavBar from '@/components/MenuNavBar'
 import MenuUserRepoList from '@/components/MenuUserRepoList'
+import marked from 'marked'
 
 export default {
   name: 'RepoDetail',
@@ -78,9 +81,16 @@ export default {
     ]),
     // Sum total bytes per language
     totalBytesLanguages () {
-      return Object.values(this.repositoryDetail).reduce((accumulator, current) => {
+      return Object.values(this.repositoryDetail.languages).reduce((accumulator, current) => {
         return accumulator + current
       }, 0)
+    },
+    readmeMarkdown () {
+      if (typeof this.repositoryDetail.readme.content === 'undefined') {
+        return ''
+      }
+      const markdown = atob(this.repositoryDetail.readme.content)
+      return marked(markdown)
     }
   },
   watch: {
@@ -113,4 +123,17 @@ export default {
 .borderless-top th {
   border-top: 0;
 }
+.readme {
+  text-align: left;
+}
+
+div.readme >>> pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
 </style>
+

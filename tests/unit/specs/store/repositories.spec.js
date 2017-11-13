@@ -86,7 +86,10 @@ describe('repositories store - mutations', () => {
     const state = {
       currentUser: 'maxpou',
       currentRepositoryName: 'dotfiles',
-      repositoryDetail: {}
+      repositoryDetail: {
+        languages: {},
+        readme: {}
+      }
     }
 
     repositoriesStore.mutations.FETCH_REPO_DETAIL(state, {user: 'yyx990803', repository: 'benchmark'})
@@ -94,20 +97,29 @@ describe('repositories store - mutations', () => {
     const expected = {
       currentUser: 'yyx990803',
       currentRepositoryName: 'benchmark',
-      repositoryDetail: {}
+      repositoryDetail: {
+        languages: {},
+        readme: {}
+      }
     }
     expect(state).toEqual(expected)
   })
 
-  it('RECEIVE_REPOSITORY_DETAIL', () => {
+  it('RECEIVE_REPOSITORY_LANGUAGE', () => {
     const state = {
-      repositoryDetail: {}
+      repositoryDetail: {
+        languages: {},
+        readme: {}
+      }
     }
     const details = {'JavaScript': 97217, 'Vue': 61263, 'HTML': 6769, 'CSS': 807}
-    repositoriesStore.mutations.RECEIVE_REPOSITORY_DETAIL(state, details)
+    repositoriesStore.mutations.RECEIVE_REPOSITORY_LANGUAGE(state, details)
 
     const expected = {
-      repositoryDetail: details
+      repositoryDetail: {
+        languages: details,
+        readme: {}
+      }
     }
     expect(state).toEqual(expected)
   })

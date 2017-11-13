@@ -7,7 +7,10 @@ const state = {
   currentUser: '',
   currentRepositoryName: '',
   users: {},
-  repositoryDetail: {}
+  repositoryDetail: {
+    languages: {},
+    readme: {}
+  }
 }
 
 const getters = {
@@ -32,7 +35,10 @@ const actions = {
   loadRepositoryDetail ({ commit }, {user, repository}) {
     commit(types.FETCH_REPO_DETAIL, {user, repository})
     githubApi.getRepositoryLanguage(user, repository).then(data => {
-      commit(types.RECEIVE_REPOSITORY_DETAIL, data)
+      commit(types.RECEIVE_REPOSITORY_LANGUAGE, data)
+    })
+    githubApi.getRepositoryReadme(user, repository).then(data => {
+      commit(types.RECEIVE_REPOSITORY_README, data)
     })
   }
 }
@@ -57,10 +63,16 @@ const mutations = {
       state.currentUser = user
     }
     state.currentRepositoryName = repository
-    state.repositoryDetail = {}
+    state.repositoryDetail = {
+      languages: {},
+      readme: {}
+    }
   },
-  [types.RECEIVE_REPOSITORY_DETAIL] (state, data) {
-    state.repositoryDetail = data
+  [types.RECEIVE_REPOSITORY_LANGUAGE] (state, data) {
+    state.repositoryDetail.languages = data
+  },
+  [types.RECEIVE_REPOSITORY_README] (state, data) {
+    state.repositoryDetail.readme = data
   }
 }
 
