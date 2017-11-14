@@ -1,9 +1,13 @@
 {
   "name": "gitvub",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Github + Vue = GitVub",
   "author": "Maxence POUTORD <maxence.poutord@gmail.com>",
-  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxpou/gitvub.git"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
@@ -15,12 +19,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "bootstrap": "^4.0.0-beta.2",
-<<<<<<< HEAD
-    "install": "^0.10.1",
-    "npm": "^5.5.1",
-=======
     "marked": "^0.3.6",
->>>>>>> cb70d99... Add project's readme in RepoDetail
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
