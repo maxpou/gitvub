@@ -3,6 +3,7 @@ import axios from 'axios'
 /**
  * @param {string} username
  * @return {Promise<Object[]>} array of repositories
+ * @see {@link https://developer.github.com/v3/repos/#list-user-repositories}
  */
 export function getRepositories (username) {
   const cacheKey = `users/${username}/repos`

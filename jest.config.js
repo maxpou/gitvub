@@ -12,6 +12,9 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/jest-vue-preprocessor'
   },
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1'
+  },
   collectCoverageFrom: [
     'src/**/*.{js,vue}',
     '!src/main.js',

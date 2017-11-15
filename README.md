@@ -1,6 +1,6 @@
 # GitVub
 
-[![Build Status](https://travis-ci.org/maxpou/gitvub.svg?branch=master)](https://travis-ci.org/maxpou/gitvub)[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Build Status](https://travis-ci.org/maxpou/gitvub.svg?branch=master)](https://travis-ci.org/maxpou/gitvub) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 
 ## What's inside?
