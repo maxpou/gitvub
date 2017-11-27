@@ -1,6 +1,6 @@
 module.exports = {
   verbose: false,
-  cache: true,
+  cache: false,
   setupFiles: [
     '<rootDir>/tests/unit/custom/browserMock.js'
   ],
@@ -21,5 +21,5 @@ module.exports = {
     '!**/node_modules/**'
   ],
   coverageDirectory: '<rootDir>/tests/unit/coverage',
-  mapCoverage: true
+  mapCoverage: false
 }
