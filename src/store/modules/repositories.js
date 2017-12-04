@@ -4,9 +4,8 @@ import * as types from '../mutation-types'
 // initial state
 const state = {
   repositories: [],
-  // todo: rename to nextPage
-  currentPage: 1,
-  lastPage: true,
+  nextPage: 1,
+  isLastPage: true,
   repository: {
     detail: {},
     languages: {},
@@ -17,7 +16,7 @@ const state = {
 const getters = {
   currentUserRepositories: (state) => state.repositories,
   currentRepository: (state) => state.repository,
-  isFullyLoaded: (state) => state.lastPage
+  isFullyLoaded: (state) => state.isLastPage
 }
 
 const actions = {
@@ -29,7 +28,7 @@ const actions = {
   },
   loadMoreRepositories ({ commit, state }, user) {
     commit(types.FETCH_USER_REPOS)
-    repositoriesApi.getRepositories(user, state.currentPage).then(repositories => {
+    repositoriesApi.getRepositories(user, state.nextPage).then(repositories => {
       commit(types.RECEIVE_REPOSITORIES, repositories)
     })
   },
@@ -50,15 +49,15 @@ const actions = {
 const mutations = {
   [types.INIT_USER_REPOS] (state) {
     state.repositories = []
-    state.currentPage = 1
-    state.lastPage = true
+    state.nextPage = 1
+    state.isLastPage = true
   },
   [types.FETCH_USER_REPOS] (state) {
-    state.currentPage = state.currentPage + 1
+    state.nextPage = state.nextPage + 1
   },
   [types.RECEIVE_REPOSITORIES] (state, repositories) {
     state.repositories = repositories.repos
-    state.lastPage = repositories.isLastPage
+    state.isLastPage = repositories.isLastPage
   },
   [types.FETCH_REPO_DETAIL] (state, repository) {
     state.repository = {

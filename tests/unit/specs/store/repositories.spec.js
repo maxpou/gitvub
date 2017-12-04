@@ -22,15 +22,15 @@ describe('repositories store - mutations', () => {
         { name: 'foo' },
         { name: 'bar' }
       ],
-      currentPage: 5,
-      lastPage: false
+      nextPage: 5,
+      isLastPage: false
     }
 
     repositoriesStore.mutations.INIT_USER_REPOS(state)
 
     expect(state).toEqual({
-      currentPage: 1,
-      lastPage: true,
+      nextPage: 1,
+      isLastPage: true,
       repositories: []
     })
   })
@@ -38,7 +38,7 @@ describe('repositories store - mutations', () => {
   it('RECEIVE_REPOSITORIES', () => {
     const state = {
       repositories: [],
-      lastPage: true
+      isLastPage: true
     }
     const recievedRepositories = {
       repos: [
@@ -57,7 +57,7 @@ describe('repositories store - mutations', () => {
         { name: 'dotfiles' },
         { name: 'vuejs.org' }
       ],
-      lastPage: false
+      isLastPage: false
     }
     expect(state).toEqual(expected)
   })
