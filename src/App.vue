@@ -1,12 +1,26 @@
 <template>
-  <div id="app" class="container-fluid">
-    <router-view/>
+  <div>
+    <div
+      id="app"
+      class="container-fluid">
+      <menu-nav-bar v-if="['Welcome'].indexOf($route.name) === -1"/>
+      <router-view/>
+    </div>
+
+    <footer-bar/>
   </div>
 </template>
 
 <script>
+import MenuNavBar from '@/components/MenuNavBar'
+import FooterBar from '@/components/FooterBar'
+
 export default {
-  name: 'app'
+  name: 'App',
+  components: {
+    MenuNavBar,
+    FooterBar
+  }
 }
 </script>
 

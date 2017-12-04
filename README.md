@@ -19,7 +19,9 @@ Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and 
 
 ## Notes
 
-* Code follow [StandarJS](https://standardjs.com/) rules;
+* Code style follow:
+  * [StandarJS](https://standardjs.com/)
+  * [VueJS **reccomended** rules](https://vuejs.org/v2/style-guide/) (thanks to [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue#readme))
 * API test use [dynamic import (Stage 3)](https://github.com/tc39/proposal-dynamic-import)
 * API calls are cached in sessionStorage
 

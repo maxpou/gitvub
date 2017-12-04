@@ -3,90 +3,69 @@ import repositoriesStore from '@/store/modules/repositories'
 describe('repositories store - getters', () => {
   it('currentUserRepositories - return current user repositories', () => {
     const state = {
-      currentUser: 'maxpou-slides',
-      users: {
-        bob: {
-          repos: {
-            'test-a': {},
-            'test-b': {}
-          }
-        },
-        'maxpou-slides': {
-          repos: {
-            'vuejs-training': {},
-            'immutability-js': {}
-          }
-        }
-      }
+      repositories: [
+        { name: 'foo' },
+        { name: 'bar' }
+      ]
     }
 
     const result = repositoriesStore.getters.currentUserRepositories(state)
-    expect(result).toEqual(state.users['maxpou-slides'].repos)
+    expect(Array.isArray(result)).toBeTruthy()
+    expect(result).toEqual(state.repositories)
   })
 })
 
 describe('repositories store - mutations', () => {
-  it('FETCH_USER_REPOS', () => {
+  it('INIT_USER_REPOS', () => {
     const state = {
-      currentUser: '',
-      users: {}
+      repositories: [
+        { name: 'foo' },
+        { name: 'bar' }
+      ],
+      currentPage: 5,
+      lastPage: false
     }
 
-    repositoriesStore.mutations.FETCH_USER_REPOS(state, 'maxpou')
-    const expected = {
-      currentUser: 'maxpou',
-      users: {
-        maxpou: {
-          repos: {}
-        }
-      }
-    }
-    expect(state).toEqual(expected)
+    repositoriesStore.mutations.INIT_USER_REPOS(state)
+
+    expect(state).toEqual({
+      currentPage: 1,
+      lastPage: true,
+      repositories: []
+    })
   })
 
   it('RECEIVE_REPOSITORIES', () => {
     const state = {
-      currentUser: 'maxpou',
-      users: {
-        maxpou: {
-          repos: {}
-        }
-      }
+      repositories: [],
+      lastPage: true
     }
-    const repositories = [
-      { name: 'docker-symfony' },
-      { name: 'dotfiles' },
-      { name: 'vuejs.org' }
-    ]
+    const recievedRepositories = {
+      repos: [
+        { name: 'docker-symfony' },
+        { name: 'dotfiles' },
+        { name: 'vuejs.org' }
+      ],
+      isLastPage: false
+    }
 
-    repositoriesStore.mutations.RECEIVE_REPOSITORIES(state, {repositories, user: 'maxpou'})
+    repositoriesStore.mutations.RECEIVE_REPOSITORIES(state, recievedRepositories)
 
     const expected = {
-      currentUser: 'maxpou',
-      users: {
-        maxpou: {
-          repos: {
-            'docker-symfony': {
-              'name': 'docker-symfony'
-            },
-            'dotfiles': {
-              'name': 'dotfiles'
-            },
-            'vuejs.org': {
-              'name': 'vuejs.org'
-            }
-          }
-        }
-      }
+      repositories: [
+        { name: 'docker-symfony' },
+        { name: 'dotfiles' },
+        { name: 'vuejs.org' }
+      ],
+      lastPage: false
     }
     expect(state).toEqual(expected)
   })
 
   it('FETCH_REPO_DETAIL', () => {
     const state = {
-      currentUser: 'maxpou',
-      currentRepositoryName: 'dotfiles',
-      repositoryDetail: {
+      repository: {
+        detail: {},
         languages: {},
         readme: {}
       }
@@ -95,9 +74,8 @@ describe('repositories store - mutations', () => {
     repositoriesStore.mutations.FETCH_REPO_DETAIL(state, {user: 'yyx990803', repository: 'benchmark'})
 
     const expected = {
-      currentUser: 'yyx990803',
-      currentRepositoryName: 'benchmark',
-      repositoryDetail: {
+      repository: {
+        detail: {},
         languages: {},
         readme: {}
       }
@@ -107,7 +85,8 @@ describe('repositories store - mutations', () => {
 
   it('RECEIVE_REPOSITORY_LANGUAGE', () => {
     const state = {
-      repositoryDetail: {
+      repository: {
+        detail: {},
         languages: {},
         readme: {}
       }
@@ -116,8 +95,9 @@ describe('repositories store - mutations', () => {
     repositoriesStore.mutations.RECEIVE_REPOSITORY_LANGUAGE(state, details)
 
     const expected = {
-      repositoryDetail: {
-        languages: details,
+      repository: {
+        detail: {},
+        languages: {'JavaScript': 97217, 'Vue': 61263, 'HTML': 6769, 'CSS': 807},
         readme: {}
       }
     }

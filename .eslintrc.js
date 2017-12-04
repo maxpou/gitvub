@@ -2,8 +2,8 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
+    parser: 'babel-eslint',
     sourceType: 'module'
   },
   env: {
@@ -11,10 +11,10 @@ module.exports = {
     jest: true
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
-  // required to lint *.vue files
-  plugins: [
-    'html'
+  // https://vuejs.org/v2/style-guide/
+  extends: [
+    'standard',
+    'plugin:vue/recommended'
   ],
   // add your custom rules here
   'rules': {

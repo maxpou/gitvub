@@ -4,20 +4,35 @@
     <h1>GitVub</h1>
 
     <div class="input-group">
-      <span class="input-group-addon" id="btnGroupAddon">🔎</span>
-      <input type="text" v-model="userSearch" @keyup.enter="proceedUserRepo()"
-        class="form-control" placeholder="search user..." aria-label="Input group example" aria-describedby="btnGroupAddon">
+      <span
+        class="input-group-addon"
+        id="btnGroupAddon">🔎</span>
+      <input
+        type="text"
+        v-model="userSearch"
+        @keyup.enter="proceedUserRepo()"
+        class="form-control"
+        placeholder="search user..."
+        aria-label="Input group example"
+        aria-describedby="btnGroupAddon">
     </div>
 
-    <button v-show="canProceed" type="button" class="btn btn-outline-info btn-block" @click="proceedUserRepo()">Search user</button>
+    <button
+      v-show="canProceed"
+      type="button"
+      class="btn btn-outline-info btn-block"
+      @click="proceedUserRepo()"
+    >Search user</button>
 
     <hr>
     <p>
       Our favorites users:
-      <router-link v-for="(favorite, index) in favorites" :key="index"
+      <router-link
+        v-for="(favorite, index) in favorites"
+        :key="index"
         :to="{ name: 'RepoList', params: { user: favorite }}"
         class="badge badge-primary"
-      >@{{favorite}}</router-link>
+      >@{{ favorite }}</router-link>
     </p>
   </div>
 </template>
@@ -52,5 +67,3 @@ export default {
   margin-right: .25rem;
 }
 </style>
-
-

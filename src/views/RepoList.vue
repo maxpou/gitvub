@@ -1,50 +1,60 @@
 <template>
   <div class="repoList">
-    <menu-nav-bar/>
-    <h2>{{ currentUser }}</h2>
+
+    <profile :user="currentUser" />
 
     <div class="card-columns">
       <repo-list-item
-        v-for="(repository, index) in currentUserRepositories" :key="index"
+        v-for="(repository, index) in currentUserRepositories"
+        :key="index"
         :repository="repository"
-      ></repo-list-item>
+      />
+    </div>
+
+    <div>
+      <a
+        v-if="!isFullyLoaded"
+        @click="loadMoreRepositories($route.params.user)"
+        class="btn btn-outline-info btn-block">Load more repositories</a>
     </div>
 
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
-import MenuNavBar from '@/components/MenuNavBar'
+import { mapGetters, mapActions } from 'vuex'
+import Profile from '@/components/Profile'
 import RepoListItem from '@/components/RepoListItem'
 
 export default {
   name: 'RepoList',
   components: {
-    MenuNavBar,
+    Profile,
     RepoListItem
   },
   computed: {
-    ...mapState({
-      currentUser: state => state.repositories.currentUser
-    }),
     ...mapGetters([
-      'currentUserRepositories'
+      'currentUserRepositories',
+      'currentUser',
+      'isFullyLoaded'
     ])
   },
   watch: {
     '$route': 'fetchData'
   },
+  created () {
+    this.fetchData()
+  },
   methods: {
     ...mapActions([
-      'loadUserRepositories'
+      'loadUserRepositories',
+      'loadUser',
+      'loadMoreRepositories'
     ]),
     fetchData () {
       this.loadUserRepositories(this.$route.params.user)
+      this.loadUser(this.$route.params.user)
     }
-  },
-  created () {
-    this.fetchData()
   }
 }
 </script>

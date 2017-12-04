@@ -1,1 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 40px;
+}
