@@ -13,8 +13,7 @@
     "start": "npm run dev",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src tests/unit/specs/",
-    "unit": "cross-env BABEL_ENV=test jest tests/unit/specs/**",
-    "test": "npm run unit"
+    "test": "jest --config tests/unit/jest.config.js"
   },
   "dependencies": {
     "axios": "^0.17.0",

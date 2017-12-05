@@ -1,3 +1,8 @@
+import Vue from 'vue'
+
+Vue.config.productionTip = false
+
+// seession storage
 const sessionStorageMock = (() => {
   let store = {}
 

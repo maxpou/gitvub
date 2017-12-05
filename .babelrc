@@ -11,18 +11,8 @@
   "plugins": ["transform-runtime"],
   "env": {
     "test": {
-      "presets": [
-        ["env", { "targets": { "node": "current" }}]
-      ],
-      "plugins": [
-        "dynamic-import-node",
-        ["module-resolver", {
-          "root": ["./src"],
-          "alias": {
-            "@": "./src"
-          }
-        }]
-      ]
+      "presets": ["env", "stage-2"],
+      "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
     }
   }
 }

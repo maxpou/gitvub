@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Readme.vue test initial rendering 1`] = `
+"<div class=\\"detail readme\\"><h1 id=\\"gitvub\\">GitVub</h1>
+<p><a href=\\"https://travis-ci.org/maxpou/gitvub\\"><img src=\\"https://travis-ci.org/maxpou/gitvub.svg?branch=master\\" alt=\\"Build Status\\"></a> <a href=\\"https://standardjs.com\\"><img src=\\"https://img.shields.io/badge/code_style-standard-brightgreen.svg\\" alt=\\"Standard - JavaScript Style Guide\\"></a> <a href=\\"https://github.com/facebook/jest\\"><img src=\\"https://img.shields.io/badge/tested_with-jest-99424f.svg\\" alt=\\"tested with jest\\"></a></p>
+<h2 id=\\"what-s-inside-\\">What's inside?</h2>
+<ul>
+<li><a href=\\"https://vuejs.org/\\">VueJs 2</a>: an awesome JS Framework</li>
+<li><a href=\\"https://vuex.vuejs.org/en/\\">Vuex</a>: A state management library for VueJs</li>
+<li><a href=\\"https://router.vuejs.org/en/\\">vue-router 2</a>: a routing library</li>
+<li><a href=\\"https://github.com/mzabriskie/axios\\">Axios</a>: a well known library for XMLHttpRequests</li>
+<li><a href=\\"https://facebook.github.io/jest/\\">Facebook/Jest</a>: a test library</li>
+<li><a href=\\"http://getbootstrap.com/docs/4.0/getting-started/introduction/\\">Bootstrap</a>: CSS Framework</li>
+</ul>
+<p>... using the <a href=\\"https://api.github.com/\\">GitHub Api</a> (<a href=\\"https://developer.github.com/v3\\">doc</a>).</p>
+<p>Based on <a href=\\"https://github.com/vuejs-templates/webpack\\">vue/webpack template</a> and follow <a href=\\"http://vuejs-templates.github.io/webpack/structure.html\\">his file structure</a>.</p>
+<h2 id=\\"notes\\">Notes</h2>
+<ul>
+<li>Code style follow:<ul>
+<li><a href=\\"https://standardjs.com/\\">StandarJS</a></li>
+<li><a href=\\"https://vuejs.org/v2/style-guide/\\">VueJS <strong>reccomended</strong> rules</a> (thanks to <a href=\\"https://github.com/vuejs/eslint-plugin-vue#readme\\">eslint-plugin-vue</a>)</li>
+</ul>
+</li>
+<li>API test use <a href=\\"https://github.com/tc39/proposal-dynamic-import\\">dynamic import (Stage 3)</a></li>
+<li>API calls are cached in sessionStorage</li>
+</ul>
+<h2 id=\\"commands\\">Commands</h2>
+<pre><code class=\\"lang-bash\\"># install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# Run tests
+npm test
+
+# Run tests + generate coverage (available under /tests/unit/coverage)
+npm run unit -- --coverage
+
+# Run tests in watch node
+npm run unit -- --watchAll
+
+# Run tests + update snapshots if needed
+npm run unit -- -u
+</code></pre>
+<p>For a detailed explanation on how things work, check out the <a href=\\"http://vuejs-templates.github.io/webpack/\\">guide</a> and <a href=\\"http://vuejs.github.io/vue-loader\\">docs for vue-loader</a>.</p>
+</div>"
+`;

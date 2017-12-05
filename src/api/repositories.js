@@ -54,7 +54,7 @@ export function getRepositoryReadme (username, repository) {
  */
 export async function getRepositoryContent (username, repository, path = '') {
   if (path && path.charAt(0) !== '/') {
-    throw new Error('Path must start with a "/"')
+    return Promise.reject(new Error('Path must start with a "/"'))
   }
   return http.get(`repos/${username}/${repository}/contents${path}`)
 }

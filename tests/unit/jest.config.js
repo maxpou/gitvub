@@ -1,9 +1,10 @@
+const path = require('path')
+
 module.exports = {
   // verbose: true,
-  cache: true,
-  setupFiles: [
-    '<rootDir>/tests/unit/custom/browserMock.js'
-  ],
+  // cache: false,
+  rootDir: path.resolve(__dirname, '../../'),
+  setupFiles: ['<rootDir>/tests/unit/setup'],
   moduleFileExtensions: [
     'js',
     'vue'
@@ -17,9 +18,8 @@ module.exports = {
   },
   collectCoverageFrom: [
     'src/**/*.{js,vue}',
-    '!src/main.js',
-    '!**/node_modules/**'
+    '!src/main.js'
   ],
   coverageDirectory: '<rootDir>/tests/unit/coverage',
-  mapCoverage: false
+  mapCoverage: true
 }

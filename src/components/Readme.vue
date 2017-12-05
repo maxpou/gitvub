@@ -19,7 +19,6 @@ export default {
   },
   computed: {
     readmeMarkdown () {
-      console.log(this.readme)
       if (typeof this.readme.content === 'undefined') {
         return ''
       }

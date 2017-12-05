@@ -1,4 +1,4 @@
-import userResponse from '../__mocks__/users.maxpou.response.json'
+import userResponse from '../__mocks__/users.maxpou.json'
 import * as usersApi from '@/api/users'
 
 describe('Users API', () => {

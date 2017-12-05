@@ -7,8 +7,7 @@ module.exports = {
     sourceType: 'module'
   },
   env: {
-    browser: true,
-    jest: true
+    browser: true
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   // https://vuejs.org/v2/style-guide/
