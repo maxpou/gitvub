@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .file-explorer {
   text-align: left;
 }
