@@ -19,7 +19,7 @@ script:
   - "cd tests/unit/coverage && codecov"
 
 before_deploy:
-  - npm run build
+  - "cd ../../.. && npm run build"
 
 deploy:
   provider: pages
