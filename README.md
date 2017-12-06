@@ -45,13 +45,13 @@ npm run build --report
 npm test
 
 # Run tests + generate coverage (available under /tests/unit/coverage)
-npm run unit -- --coverage
+npm test -- --coverage
 
 # Run tests in watch node
-npm run unit -- --watchAll
+npm test -- --watchAll
 
 # Run tests + update snapshots if needed
-npm run unit -- -u
+npm test -- -u
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
