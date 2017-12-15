@@ -5,17 +5,11 @@ import * as types from '../mutation-types'
 const state = {
   repositories: [],
   nextPage: 1,
-  isLastPage: true,
-  repository: {
-    detail: {},
-    languages: {},
-    readme: {}
-  }
+  isLastPage: true
 }
 
 const getters = {
   currentUserRepositories: (state) => state.repositories,
-  currentRepository: (state) => state.repository,
   isFullyLoaded: (state) => state.isLastPage
 }
 
@@ -30,18 +24,6 @@ const actions = {
     commit(types.FETCH_USER_REPOS)
     repositoriesApi.getRepositories(user, state.nextPage).then(repositories => {
       commit(types.RECEIVE_REPOSITORIES, repositories)
-    })
-  },
-  loadRepositoryDetail ({ commit }, {user, repository}) {
-    commit(types.FETCH_REPO_DETAIL, repository)
-    repositoriesApi.getRepository(user, repository).then(data => {
-      commit(types.RECEIVE_REPOSITORY, data)
-    })
-    repositoriesApi.getRepositoryLanguage(user, repository).then(data => {
-      commit(types.RECEIVE_REPOSITORY_LANGUAGE, data)
-    })
-    repositoriesApi.getRepositoryReadme(user, repository).then(data => {
-      commit(types.RECEIVE_REPOSITORY_README, data)
     })
   }
 }
@@ -58,22 +40,6 @@ const mutations = {
   [types.RECEIVE_REPOSITORIES] (state, repositories) {
     state.repositories = repositories.repos
     state.isLastPage = repositories.isLastPage
-  },
-  [types.FETCH_REPO_DETAIL] (state, repository) {
-    state.repository = {
-      detail: {},
-      languages: {},
-      readme: {}
-    }
-  },
-  [types.RECEIVE_REPOSITORY] (state, data) {
-    state.repository.detail = data
-  },
-  [types.RECEIVE_REPOSITORY_LANGUAGE] (state, data) {
-    state.repository.languages = data
-  },
-  [types.RECEIVE_REPOSITORY_README] (state, data) {
-    state.repository.readme = data
   }
 }
 

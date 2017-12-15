@@ -25,8 +25,8 @@ export default {
   },
   computed: {
     orderedItems () {
-      const copy = [...this.repoContent]
-      return copy.sort((contentA, contentB) => contentB.type < contentA.type)
+      const repoContentCopy = [...this.repoContent]
+      return repoContentCopy.sort((contentA, contentB) => contentB.type < contentA.type)
     }
   }
 }
@@ -35,5 +35,6 @@ export default {
 <style scoped>
 .file-explorer {
   text-align: left;
+  margin-bottom: 2rem;
 }
 </style>

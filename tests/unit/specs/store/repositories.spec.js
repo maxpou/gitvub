@@ -61,46 +61,4 @@ describe('repositories store - mutations', () => {
     }
     expect(state).toEqual(expected)
   })
-
-  it('FETCH_REPO_DETAIL', () => {
-    const state = {
-      repository: {
-        detail: {},
-        languages: {},
-        readme: {}
-      }
-    }
-
-    repositoriesStore.mutations.FETCH_REPO_DETAIL(state, {user: 'yyx990803', repository: 'benchmark'})
-
-    const expected = {
-      repository: {
-        detail: {},
-        languages: {},
-        readme: {}
-      }
-    }
-    expect(state).toEqual(expected)
-  })
-
-  it('RECEIVE_REPOSITORY_LANGUAGE', () => {
-    const state = {
-      repository: {
-        detail: {},
-        languages: {},
-        readme: {}
-      }
-    }
-    const details = {'JavaScript': 97217, 'Vue': 61263, 'HTML': 6769, 'CSS': 807}
-    repositoriesStore.mutations.RECEIVE_REPOSITORY_LANGUAGE(state, details)
-
-    const expected = {
-      repository: {
-        detail: {},
-        languages: {'JavaScript': 97217, 'Vue': 61263, 'HTML': 6769, 'CSS': 807},
-        readme: {}
-      }
-    }
-    expect(state).toEqual(expected)
-  })
 })

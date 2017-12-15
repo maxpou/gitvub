@@ -31,11 +31,11 @@ describe('Repositories API', () => {
 
   it('getRepositoryContent(username, repository) should return the response data', async () => {
     expect.assertions(1)
-    await expect(repositoriesApi.getRepositoryContent('maxpou', 'gitvub')).resolves.toEqual(contentResponse)
+    expect(repositoriesApi.getRepositoryContent('maxpou', 'gitvub')).resolves.toEqual(contentResponse)
   })
 
   it('getRepositoryContent(username, repository, path) should throw an error when path don\'t start with a "/"', async () => {
-    // expect.assertions(1)
-    await expect(repositoriesApi.getRepositoryContent('maxpou', 'gitvub', 'foo')).rejects.toEqual(new Error('Path must start with a "/"'))
+    expect.assertions(1)
+    expect(repositoriesApi.getRepositoryContent('maxpou', 'gitvub', 'foo')).rejects.toEqual(new Error('Path must start with a "/"'))
   })
 })

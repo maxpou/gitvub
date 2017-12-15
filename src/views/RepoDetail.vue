@@ -4,38 +4,37 @@
       <div class="menu-right col-12 col-md-9">
 
         <div class="jumbotron">
-          <h2><router-link :to="{ name: 'RepoList', params: { user: currentUser.login }}">{{ currentUser.login }}</router-link> / {{ currentRepository.detail.name }}</h2>
+          <h2><router-link :to="{ name: 'RepoList', params: { user: currentUser.login }}">{{ currentUser.login }}</router-link> / {{ detail.name }}</h2>
           <p
             class="lead"
-            v-if="currentRepository.detail"><em>{{ currentRepository.detail.description }}</em></p>
-          <p
-          v-if="currentRepository.detail.homepage">
+            v-if="detail"><em>{{ detail.description }}</em></p>
+          <p v-if="detail.homepage">
             <a
-              :href="currentRepository.detail.homepage"
-              target="_blank">{{ currentRepository.detail.homepage }}</a>
+              :href="detail.homepage"
+              target="_blank">{{ detail.homepage }}</a>
           </p>
 
           <div
             class="row"
-            v-if="currentRepository.detail">
+            v-if="detail">
             <div class="col-sm">
               <ul class="list-unstyled">
-                <li>🌟 {{ currentRepository.detail.stargazers_count }}</li>
+                <li>🌟 {{ detail.stargazers_count }}</li>
               </ul>
             </div>
             <div class="col-sm">
               <ul class="list-unstyled">
-                <li>⑂ {{ currentRepository.detail.forks_count }}</li>
+                <li>⑂ {{ detail.forks_count }}</li>
               </ul>
             </div>
             <div class="col-sm">
               <ul class="list-unstyled">
-                <li>👁 {{ currentRepository.detail.watchers }}</li>
+                <li>👁 {{ detail.watchers }}</li>
               </ul>
             </div>
             <div class="col-sm">
               <ul class="list-unstyled">
-                <li>🐞 {{ currentRepository.detail.open_issues_count }}</li>
+                <li>🐞 {{ detail.open_issues_count }}</li>
               </ul>
             </div>
           </div>
@@ -47,12 +46,12 @@
         />
 
         <readme
-          :readme="currentRepository.readme"
+          :readme="readme"
         />
 
         <div
           class="detail"
-          v-if="currentRepository.languages">
+          v-if="languages">
           <table class="table table-striped borderless-top">
             <tr>
               <th
@@ -61,7 +60,7 @@
             </tr>
             <tbody v-if="totalBytesLanguages">
               <tr
-                v-for="(bytes, language) in currentRepository.languages"
+                v-for="(bytes, language) in languages"
                 :key="language">
                 <td>{{ language }}</td>
                 <td>{{ bytesPerLanguagePercentage(bytes, totalBytesLanguages) }}%</td>
@@ -86,7 +85,7 @@ import { mapActions, mapGetters } from 'vuex'
 import MenuUserRepoList from '@/components/MenuUserRepoList'
 import FileExplorer from '@/components/FileExplorer'
 import Readme from '@/components/Readme'
-import { getRepositoryContent } from '../api/repositories'
+import { getRepository, getRepositoryContent, getRepositoryLanguage, getRepositoryReadme } from '../api/repositories'
 
 export default {
   name: 'RepoDetail',
@@ -97,18 +96,20 @@ export default {
   },
   data () {
     return {
-      repoContent: []
+      repoContent: [],
+      detail: {},
+      languages: {},
+      readme: {}
     }
   },
   computed: {
     ...mapGetters([
       'currentUserRepositories',
-      'currentRepository',
       'currentUser'
     ]),
     // Sum total bytes per language
     totalBytesLanguages () {
-      return Object.values(this.currentRepository.languages).reduce((accumulator, current) => {
+      return Object.values(this.languages).reduce((accumulator, current) => {
         return accumulator + current
       }, 0)
     }
@@ -121,15 +122,26 @@ export default {
   },
   methods: {
     ...mapActions([
-      'loadRepositoryDetail',
       'loadUserRepositories',
       'loadUser'
     ]),
-    async fetchData () {
-      this.loadRepositoryDetail(this.$route.params)
+    fetchData () {
       this.loadUser(this.$route.params.user)
       this.loadUserRepositories(this.$route.params.user)
-      this.repoContent = await getRepositoryContent(this.$route.params.user, this.$route.params.repository)
+
+      // ok
+      getRepository(this.$route.params.user, this.$route.params.repository).then(detailData => {
+        this.detail = detailData
+      })
+      getRepositoryLanguage(this.$route.params.user, this.$route.params.repository).then(languagesData => {
+        this.languages = languagesData
+      })
+      getRepositoryReadme(this.$route.params.user, this.$route.params.repository).then(readmeData => {
+        this.readme = readmeData
+      })
+      getRepositoryContent(this.$route.params.user, this.$route.params.repository).then(repoContentData => {
+        this.repoContent = repoContentData
+      })
     },
     bytesPerLanguagePercentage (nbBytes, total) {
       return Math.round(nbBytes / total * 100)

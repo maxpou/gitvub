@@ -52,7 +52,7 @@ export function getRepositoryReadme (username, repository) {
  * @return {Promise<Object>} repository content (files on root)
  * @see {@link https://developer.github.com/v3/repos/contents/#get-contents}
  */
-export async function getRepositoryContent (username, repository, path = '') {
+export function getRepositoryContent (username, repository, path = '') {
   if (path && path.charAt(0) !== '/') {
     return Promise.reject(new Error('Path must start with a "/"'))
   }
