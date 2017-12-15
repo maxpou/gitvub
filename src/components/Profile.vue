@@ -4,7 +4,8 @@
       <div class="col-md-4 col-sm-4">
         <img
           :src="user.avatar_url"
-          class="img-thumbnail rounded float-left">
+          class="img-thumbnail rounded float-left"
+          :alt="user.login">
       </div>
       <div class="profile__content col-md-8 col-sm-8 col-xs-12">
         <h2>{{ user.name }}</h2>
