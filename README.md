@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/maxpou/gitvub.svg?branch=master)](https://travis-ci.org/maxpou/gitvub) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
+> GitHub + Vue.js = GitVub
+
+A Vue.js Progressive Web App (PWA) based on GitHub API.
 
 ## What's inside?
 
@@ -25,6 +28,32 @@ Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and 
 * API test use [dynamic import (Stage 3)](https://github.com/tc39/proposal-dynamic-import)
 * API calls are cached in sessionStorage
 
+## Working with HTTPS
+
+```bash
+# first install ngrok (https://ngrok.com/)
+$ npm install -g ngrok
+
+# Terminal 1: (will run app on port 8080)
+$ npm run dev
+
+# Then on a 2nd terminal:
+$ ngrok http 8080
+
+ngrok by @inconshreveable                                                                                                                                                                                                   (Ctrl+C to quit)
+
+Session Status                online
+Version                       2.2.8
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://ada5c26b.ngrok.io -> localhost:8080
+Forwarding                    https://ada5c26b.ngrok.io -> localhost:8080
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              0       0       0.00    0.00    0.00    0.00
+```
+
+You can now work with the HTTPS url given (in the example above: `https://ada5c26b.ngrok.io`)
 
 ## Commands
 
