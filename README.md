@@ -4,7 +4,11 @@
 
 > GitHub + Vue.js = GitVub
 
-A Vue.js Progressive Web App (PWA) based on GitHub API.
+A Vue.js **Progressive Web App (PWA)** based on GitHub API.
+
+![mobile screens](docs/mobile-screens.png)
+
+*icon on desktop, splash screen and screen shot taken from this application*
 
 ## What's inside?
 
