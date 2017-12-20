@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FooterBar.vue test initial rendering 1`] = `"<footer class=\\"footer\\"><div class=\\"container\\"><span class=\\"text-muted small\\"><a href=\\"https://github.com\\">GitHub</a> + <a href=\\"https://vuejs.org/\\">VueJS</a> = GitVub.</span> <span class=\\"me text-muted text-right\\">@maxpou</span></div></footer>"`;
+exports[`FooterBar.vue test initial rendering 1`] = `
+"<footer class=\\"footer\\"><div class=\\"container\\"><span class=\\"text-muted small\\"><a href=\\"https://github.com\\">GitHub</a> + <a href=\\"https://vuejs.org/\\">VueJS</a> =
+      <router-link to=\\"[object Object]\\">GitVub</router-link>.
+    </span> <span class=\\"me text-muted text-right\\">@maxpou</span></div></footer>"
+`;
