@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 
 const env = config.build.env
@@ -97,7 +98,33 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // service worker caching
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'gitvub',
+      filename: 'service-worker.js',
+      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      minify: true,
+      stripPrefix: 'dist/',
+      // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/api\.github\.com/,
+          handler: 'cacheFirst',
+          debug: true,
+          options: {
+            cache: {
+              name: 'api-cache',
+              // 1 hour
+              maxAgeSeconds: 60 * 60,
+              // queryOptions: {
+              //   ignoreSearch: true
+              // }
+            }
+          }
+        }
+      ]
+    })
   ]
 })
 

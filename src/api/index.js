@@ -29,10 +29,10 @@ export function get (shortUrl, includeHeaders = false) {
 
   return axios.get(fullUrl, getOAuthTokens()).then(response => {
     if (includeHeaders) {
-      window.sessionStorage.setItem(shortUrl, JSON.stringify(response))
+      // window.sessionStorage.setItem(shortUrl, JSON.stringify(response))
       return response
     }
-    window.sessionStorage.setItem(shortUrl, JSON.stringify(response.data))
+    // window.sessionStorage.setItem(shortUrl, JSON.stringify(response.data))
     return response.data
   })
 }
