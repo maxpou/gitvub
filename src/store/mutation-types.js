@@ -9,3 +9,6 @@ export const RECEIVE_REPOSITORY_README = 'RECEIVE_REPOSITORY_README'
 
 export const FETCH_USER = 'FETCH_USER'
 export const RECEIVE_USER = 'RECEIVE_USER'
+
+export const ONLINE = 'ONLINE'
+export const OFFLINE = 'OFFLINE'

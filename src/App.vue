@@ -4,6 +4,7 @@
       id="app"
       class="container-fluid">
       <menu-nav-bar v-if="['Welcome'].indexOf($route.name) === -1"/>
+      <offline-notification :is-offline="!$store.state.navigator.isOnline"/>
       <router-view/>
     </div>
 
@@ -14,12 +15,18 @@
 <script>
 import MenuNavBar from '@/components/MenuNavBar'
 import FooterBar from '@/components/FooterBar'
+import OfflineNotification from '@/components/OfflineNotification'
 
 export default {
   name: 'App',
   components: {
     MenuNavBar,
-    FooterBar
+    FooterBar,
+    OfflineNotification
+  },
+  mounted () {
+    window.addEventListener('offline', (e) => this.$store.commit('OFFLINE'))
+    window.addEventListener('online', (e) => this.$store.commit('ONLINE'))
   }
 }
 </script>

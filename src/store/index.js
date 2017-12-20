@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import repositories from './modules/repositories'
 import users from './modules/users'
+import navigator from './modules/navigator'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,8 @@ const debug = process.env.NODE_ENV !== 'production'
 const store = new Vuex.Store({
   modules: {
     repositories,
-    users
+    users,
+    navigator
   },
   strict: debug
 })
@@ -25,7 +27,8 @@ if (module.hot) {
     store.hotUpdate({
       modules: {
         repositories,
-        users
+        users,
+        navigator
       }
     })
   })
