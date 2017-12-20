@@ -1,7 +1,10 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <span class="text-muted small"><a href="https://github.com">GitHub</a> + <a href="https://vuejs.org/">VueJS</a> = GitVub.</span>
+      <span class="text-muted small">
+        <a href="https://github.com">GitHub</a> + <a href="https://vuejs.org/">VueJS</a> =
+        <router-link :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link>.
+      </span>
       <span class="me text-muted text-right">@maxpou</span>
     </div>
   </footer>
