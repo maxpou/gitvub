@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Readme.vue test initial rendering 1`] = `
-"<div class=\\"detail readme\\"><h1 id=\\"gitvub\\">GitVub</h1>
+"<section class=\\"section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp\\"><div class=\\"mdl-card mdl-cell mdl-cell--12-col\\"><div class=\\"readme mdl-card__supporting-text\\"><h1 id=\\"gitvub\\">GitVub</h1>
 <p><a href=\\"https://travis-ci.org/maxpou/gitvub\\"><img src=\\"https://travis-ci.org/maxpou/gitvub.svg?branch=master\\" alt=\\"Build Status\\"></a> <a href=\\"https://standardjs.com\\"><img src=\\"https://img.shields.io/badge/code_style-standard-brightgreen.svg\\" alt=\\"Standard - JavaScript Style Guide\\"></a> <a href=\\"https://github.com/facebook/jest\\"><img src=\\"https://img.shields.io/badge/tested_with-jest-99424f.svg\\" alt=\\"tested with jest\\"></a></p>
 <h2 id=\\"what-s-inside-\\">What's inside?</h2>
 <ul>
@@ -50,5 +50,5 @@ npm run unit -- --watchAll
 npm run unit -- -u
 </code></pre>
 <p>For a detailed explanation on how things work, check out the <a href=\\"http://vuejs-templates.github.io/webpack/\\">guide</a> and <a href=\\"http://vuejs.github.io/vue-loader\\">docs for vue-loader</a>.</p>
-</div>"
+</div></div></section>"
 `;

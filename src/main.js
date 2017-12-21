@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 import './main.scss'
+require('material-design-lite')
 
 Vue.config.productionTip = false
 

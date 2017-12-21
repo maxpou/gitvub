@@ -19,10 +19,10 @@ export default {
 </script>
 <style scoped>
 .fade-enter-active, .fade-leave-active {
-    transform: scaleY(1);
+  transform: scaleY(1);
 }
 .fade-enter, .fade-leave-to {
-    transform: scaleY(0);
-    transition: transform .5s ease;
+  transform: scaleY(0);
+  transition: transform .5s ease;
 }
 </style>

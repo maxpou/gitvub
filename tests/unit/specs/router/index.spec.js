@@ -13,7 +13,7 @@ jest.mock('vue-router', () => class VueRouter {
 })
 
 jest.mock('@/views/Welcome', () => 'Welcome component')
-jest.mock('@/views/RepoList', () => 'RepoList component')
+jest.mock('@/views/UserRepoList', () => 'UserRepoList component')
 jest.mock('@/views/RepoDetail', () => 'RepoDetail component')
 
 describe('router', () => {
@@ -27,9 +27,9 @@ describe('router', () => {
     expect(router.routes[0].path).toEqual('/')
   })
 
-  it('should declare RepoList route', () => {
-    expect(router.routes[1].component).toEqual('RepoList component')
-    expect(router.routes[1].name).toEqual('RepoList')
+  it('should declare UserRepoList route', () => {
+    expect(router.routes[1].component).toEqual('UserRepoList component')
+    expect(router.routes[1].name).toEqual('UserRepoList')
     expect(router.routes[1].path).toEqual('/users/:user')
   })
 

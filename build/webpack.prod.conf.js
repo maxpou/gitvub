@@ -109,17 +109,24 @@ const webpackConfig = merge(baseWebpackConfig, {
       // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
       runtimeCaching: [
         {
+          urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern: /^https:\/\/code\.getmdl\.io\//,
+          handler: 'cacheFirst'
+        },
+        {
           urlPattern: /^https:\/\/api\.github\.com/,
           handler: 'cacheFirst',
-          debug: true,
           options: {
             cache: {
               name: 'api-cache',
-              // 1 hour
               maxAgeSeconds: 60 * 60,
-              // queryOptions: {
-              //   ignoreSearch: true
-              // }
             }
           }
         }

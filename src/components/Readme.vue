@@ -1,9 +1,13 @@
 <template>
-  <div
-    v-if="readme"
-    v-html="readmeMarkdown"
-    class="detail readme"
-  />
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div
+        v-if="readme"
+        v-html="readmeMarkdown"
+        class="readme mdl-card__supporting-text"
+      />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -30,10 +34,10 @@ export default {
 </script>
 
 <style scoped>
-.readme {
-  text-align: left;
+.section--center {
+  width: 100%;
+  margin-bottom: 48px;
 }
-
 div.readme >>> pre {
   padding: 16px;
   overflow: auto;

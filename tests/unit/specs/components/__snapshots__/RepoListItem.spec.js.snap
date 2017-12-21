@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`RepoListItem.vue test initial rendering 1`] = `"<div class=\\"card\\"><div class=\\"card-body\\"><h4 class=\\"card-title\\">test-repo</h4> <p class=\\"card-text\\">i'm a test repo</p> <p><!----> <!----> <!----> <!----></p> <router-link to=\\"[object Object]\\" class=\\"btn btn-outline-info btn-block btn-sm\\">details</router-link></div></div>"`;

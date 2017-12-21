@@ -17,7 +17,8 @@ A Vue.js **Progressive Web App (PWA)** based on GitHub API.
 * [vue-router 2](https://router.vuejs.org/en/): a routing library
 * [Axios](https://github.com/mzabriskie/axios): a well known library for XMLHttpRequests
 * [Facebook/Jest](https://facebook.github.io/jest/): a test library
-* [Bootstrap](http://getbootstrap.com/docs/4.0/getting-started/introduction/): CSS Framework
+* [Material Design Lite](https://getmdl.io/): CSS Framework
+* [Material Icons](https://material.io/icons/): a set of icons
 
 ... using the [GitHub Api](https://api.github.com/) ([doc](https://developer.github.com/v3)).
 

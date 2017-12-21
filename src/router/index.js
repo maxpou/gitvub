@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Welcome from '@/views/Welcome'
-import RepoList from '@/views/RepoList'
+import UserRepoList from '@/views/UserRepoList'
 import RepoDetail from '@/views/RepoDetail'
 
 Vue.use(Router)
@@ -14,8 +14,8 @@ export default new Router({
       component: Welcome
     }, {
       path: '/users/:user',
-      name: 'RepoList',
-      component: RepoList
+      name: 'UserRepoList',
+      component: UserRepoList
     }, {
       path: '/users/:user/:repository/detail',
       name: 'RepoDetail',

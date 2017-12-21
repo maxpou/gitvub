@@ -1,87 +1,27 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="menu-right col-12 col-md-9">
+  <div class="mdl-layout__tab-panel is-active" id="overview">
 
-        <div class="jumbotron">
-          <h2><router-link :to="{ name: 'RepoList', params: { user: currentUser.login }}">{{ currentUser.login }}</router-link> / {{ detail.name }}</h2>
-          <p
-            class="lead"
-            v-if="detail"><em>{{ detail.description }}</em></p>
-          <p v-if="detail.homepage">
-            <a
-              :href="detail.homepage"
-              target="_blank">{{ detail.homepage }}</a>
-          </p>
+    <repository-header
+      :currentUser="currentUser"
+      :repository="detail"
+    />
 
-          <div
-            class="row"
-            v-if="detail">
-            <div class="col-sm">
-              <ul class="list-unstyled">
-                <li>🌟 {{ detail.stargazers_count }}</li>
-              </ul>
-            </div>
-            <div class="col-sm">
-              <ul class="list-unstyled">
-                <li>⑂ {{ detail.forks_count }}</li>
-              </ul>
-            </div>
-            <div class="col-sm">
-              <ul class="list-unstyled">
-                <li>👁 {{ detail.watchers }}</li>
-              </ul>
-            </div>
-            <div class="col-sm">
-              <ul class="list-unstyled">
-                <li>🐞 {{ detail.open_issues_count }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <file-explorer
+      v-if="repoContent"
+      :repo-content="repoContent"
+    />
 
-        <file-explorer
-          v-if="repoContent"
-          :repo-content="repoContent"
-        />
+    <readme
+      v-if="readme"
+      :readme="readme"
+    />
 
-        <readme
-          :readme="readme"
-        />
-
-        <div
-          class="detail"
-          v-if="languages">
-          <table class="table table-striped borderless-top">
-            <tr>
-              <th
-                scope="col"
-                colspan="2">Languages</th>
-            </tr>
-            <tbody v-if="totalBytesLanguages">
-              <tr
-                v-for="(bytes, language) in languages"
-                :key="language">
-                <td>{{ language }}</td>
-                <td>{{ bytesPerLanguagePercentage(bytes, totalBytesLanguages) }}%</td>
-              </tr>
-            </tbody>
-            <tr v-else>
-              <td colspan="2"><em>No language found.</em></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="repo-detail col-md-3 d-sm-none d-md-block">
-        <menu-user-repo-list :repositories="currentUserRepositories"/>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import RepositoryHeader from '@/components/RepositoryHeader'
 import MenuUserRepoList from '@/components/MenuUserRepoList'
 import FileExplorer from '@/components/FileExplorer'
 import Readme from '@/components/Readme'
@@ -90,16 +30,17 @@ import { getRepository, getRepositoryContent, getRepositoryLanguage, getReposito
 export default {
   name: 'RepoDetail',
   components: {
+    RepositoryHeader,
     MenuUserRepoList,
     FileExplorer,
     Readme
   },
   data () {
     return {
-      repoContent: [],
+      repoContent: null,
       detail: {},
-      languages: {},
-      readme: {}
+      languages: null,
+      readme: null
     }
   },
   computed: {
@@ -151,11 +92,8 @@ export default {
 </script>
 
 <style scoped>
-.borderless td,
-.borderless th {
-  border: none;
-}
-.borderless-top th {
-  border-top: 0;
+main > .mdl-layout__tab-panel {
+  padding: 8px;
+  padding-top: 48px;
 }
 </style>

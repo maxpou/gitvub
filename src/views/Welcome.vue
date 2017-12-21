@@ -1,43 +1,49 @@
 <template>
-  <div class="jumbotron">
+  <div id="welcome">
 
-    <h1>GitVub</h1>
+    <div class="welcome-section">
+      <div class="welcome-section-search">
+        <h1>GitVub</h1>
 
-    <div class="input-group">
-      <span
-        class="input-group-addon"
-        id="btnGroupAddon">🔎</span>
-      <input
-        type="text"
-        v-model="userSearch"
-        @keyup.enter="proceedUserRepo()"
-        class="form-control"
-        placeholder="search user..."
-        aria-label="Input group example"
-        aria-describedby="btnGroupAddon">
+        <p class="description"><a href="https://github.com" target="_blank">GitHub</a> + <a href="https://vuejs.org/" target="_blank">Vue.js</a> =
+          <router-link :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link></p>
+
+        <div class="search-box mdl-shadow--2dp">
+          <div class="search-text mdl-textfield mdl-js-textfield">
+            <input
+              v-model="userSearch"
+              @keyup.enter="proceedUserRepo()"
+              class="mdl-textfield__input"
+              type="text"
+              id="search-user">
+            <label class="mdl-textfield__label" for="search-user">search user...</label>
+          </div>
+          <button
+            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
+            :disabled="!canProceed"
+            @click="proceedUserRepo()">
+            <i class="material-icons">search</i>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <button
-      v-show="canProceed"
-      type="button"
-      class="btn btn-outline-info btn-block"
-      @click="proceedUserRepo()"
-    >Search user</button>
-
-    <hr>
+    <!-- <hr>
     <p>
       Our favorites users:
       <router-link
         v-for="(favorite, index) in favorites"
         :key="index"
-        :to="{ name: 'RepoList', params: { user: favorite }}"
+        :to="{ name: 'UserRepoList', params: { user: favorite }}"
         class="badge badge-primary"
       >@{{ favorite }}</router-link>
-    </p>
+    </p> -->
+
   </div>
 </template>
 
 <script>
+// https://material.io/guidelines/components/text-fields.html#text-fields-field-variations --> Solo fields
 export default {
   name: 'Welcome',
   data () {
@@ -53,17 +59,64 @@ export default {
   },
   methods: {
     proceedUserRepo () {
-      this.$router.push({name: 'RepoList', params: { user: this.userSearch }})
+      if (this.canProceed) {
+        this.$router.push({name: 'UserRepoList', params: { user: this.userSearch }})
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-.btn {
-  margin-top: 0.5rem;
+h1 {
+  font-weight: bold;
+  color: #424242;
+  margin-bottom: 0px;
 }
-.badge {
-  margin-right: .25rem;
+
+.description {
+  font-style: italic;
+}
+
+.description > a {
+  color: #424242;
+  text-decoration: none;
+}
+
+.main_search {
+  background-color: white;
+  border-radius: 2px;
+  border: 3px;
+  padding: 8px;
+}
+
+.search-box {
+  background-color: white;
+  border-radius: 3px;
+  border: 3px;
+  padding: 8px;
+}
+
+.search-text {
+  width: 80%;
+  padding: 0;
+}
+.search-text > label:after {
+  bottom: 0px;
+}
+
+.welcome-section {
+  text-align: center;
+}
+
+.mdl-textfield__label {
+  top: 0;
+}
+
+.welcome-section-search {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 200px 16px 0 16px;
 }
 </style>

@@ -1,14 +1,21 @@
 <template>
-  <div>
-    <div
-      id="app"
-      class="container-fluid">
-      <menu-nav-bar v-if="['Welcome'].indexOf($route.name) === -1"/>
+  <div
+    id="app"
+    class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <menu-nav-bar v-show="['Welcome'].indexOf($route.name) === -1"/>
+
+    <main class="mdl-layout__content"
+    v-bind:class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }">
+
       <offline-notification :is-offline="!$store.state.navigator.isOnline"/>
+
       <router-view/>
-    </div>
+
+    </main>
 
     <footer-bar/>
+
   </div>
 </template>
 
@@ -32,12 +39,11 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+main.mdl-layout__content {
+  background-color:#f5f5f5;
+}
+.mdl-layout__content.welcome {
+  background: url('./assets/wallpaper.jpg') center / cover;
+  background-repeat: no-repeat;
 }
 </style>

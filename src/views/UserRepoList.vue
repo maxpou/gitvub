@@ -1,36 +1,33 @@
 <template>
-  <div class="repoList">
 
-    <profile :user="currentUser" />
+  <div class="mdl-layout__tab-panel is-active" id="overview">
 
-    <div class="card-columns">
-      <repo-list-item
-        v-for="(repository, index) in currentUserRepositories"
-        :key="index"
-        :repository="repository"
-      />
-    </div>
+      <profile :user="currentUser" />
 
+      <repo-list :repositories="currentUserRepositories" />
+
+  </div>
+
+  <!-- <div class="repoList">
     <div>
       <a
         v-if="!isFullyLoaded"
         @click="loadMoreRepositories($route.params.user)"
         class="btn btn-outline-info btn-block">Load more repositories</a>
     </div>
-
-  </div>
+  </div> -->
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Profile from '@/components/Profile'
-import RepoListItem from '@/components/RepoListItem'
+import RepoList from '@/components/RepoList'
 
 export default {
-  name: 'RepoList',
+  name: 'UserRepoList',
   components: {
     Profile,
-    RepoListItem
+    RepoList
   },
   computed: {
     ...mapGetters([
@@ -58,3 +55,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+main > .mdl-layout__tab-panel {
+  padding: 8px;
+  padding-top: 48px;
+}
+
+.mdl-card__supporting-text {
+  width: calc(100% - 80px);
+  margin: 40px;
+  padding: 0;
+}
+</style>

@@ -1,10 +1,10 @@
-@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://code.getmdl.io/1.2.1/material.blue-red.min.css');
 
-html {
-  min-height: 100%;
-  position: relative;
+a {
+  color: #009688;
 }
 
-body {
-  margin-bottom: 40px;
+section.section--center {
+  max-width: 860px;
 }

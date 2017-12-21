@@ -1,16 +1,20 @@
 <template>
-  <div class="file-explorer">
-    <ul class="list-group">
-      <li
-        v-for="content in orderedItems"
-        :key="content.sha"
-        class="list-group-item">
-        <span v-if="content.type === 'file'">📄</span>
-        <span v-else>🗂</span>
-        {{ content.name }}
-      </li>
-    </ul>
-  </div>
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <ul class="mdl-list">
+        <li
+          v-for="content in orderedItems"
+          :key="content.sha"
+          class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">
+            <i v-if="content.type === 'file'" class="material-icons mdl-list__item-icon">description</i>
+            <i v-else class="material-icons mdl-list__item-icon">folder</i>
+            {{ content.name }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -33,8 +37,15 @@ export default {
 </script>
 
 <style scoped>
-.file-explorer {
-  text-align: left;
-  margin-bottom: 2rem;
+.section--center {
+  width: 100%;
+  margin-bottom: 48px;
+}
+.mdl-list {
+  padding: 0;
+  margin: 0;
+}
+.mdl-list__item {
+  padding: 0px 16px;
 }
 </style>
