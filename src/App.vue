@@ -14,8 +14,6 @@
 
     </main>
 
-    <footer-bar/>
-
   </div>
 </template>
 
