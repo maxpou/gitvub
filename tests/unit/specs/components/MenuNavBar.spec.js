@@ -3,7 +3,29 @@ import MenuNavBar from '@/components/MenuNavBar.vue'
 
 describe('MenuNavBar.vue', () => {
   it('test initial rendering', () => {
-    const wrapper = mount(MenuNavBar)
+    const $route = {
+      name: 'About'
+    }
+    const wrapper = mount(MenuNavBar, {
+      mocks: {
+        $route
+      }
+    })
+
+    const template = wrapper.html()
+    expect(template).toMatchSnapshot()
+  })
+
+  it('test initial rendering on Welcome', () => {
+    const $route = {
+      name: 'Welcome'
+    }
+    const wrapper = mount(MenuNavBar, {
+      mocks: {
+        $route
+      }
+    })
+
     const template = wrapper.html()
     expect(template).toMatchSnapshot()
   })
