@@ -103,7 +103,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'gitvub',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      staticFileGlobs: ['dist/**/*.{js,html,css,jpg}'],
       minify: true,
       stripPrefix: 'dist/',
       // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject

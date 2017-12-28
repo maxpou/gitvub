@@ -12,9 +12,9 @@ A Vue.js **Progressive Web App (PWA)** based on GitHub API.
 
 ## What's inside?
 
-* [VueJs 2](https://vuejs.org/): an awesome JS Framework
+* [Vue.js](https://vuejs.org/): an awesome JS Framework
 * [Vuex](https://vuex.vuejs.org/en/): A state management library for VueJs
-* [vue-router 2](https://router.vuejs.org/en/): a routing library
+* [vue-router](https://router.vuejs.org/en/): a routing library
 * [Axios](https://github.com/mzabriskie/axios): a well known library for XMLHttpRequests
 * [Facebook/Jest](https://facebook.github.io/jest/): a test library
 * [Material Design Lite](https://getmdl.io/): CSS Framework
