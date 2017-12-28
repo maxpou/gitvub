@@ -18,8 +18,12 @@ script:
   - "npm test -- --coverage"
   - "cd tests/unit/coverage && codecov"
 
+# set assetsPublicPath to gitvub path
+# sed -i "0,/assetsPublicPath: '\/'/s//assetsPublicPath: '\/gitvub'/" config/index.js
 before_deploy:
-  - "cd ../../.. && npm run build"
+  - "cd ../../.."
+  - "sed -i \"0,/assetsPublicPath: '\/'/s//assetsPublicPath: '\/gitvub'/\" config/index.js"
+  - "npm run build"
 
 deploy:
   provider: pages
