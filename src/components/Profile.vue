@@ -8,8 +8,12 @@
     </div>
     <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
       <div class="mdl-card__supporting-text">
-        <h4 v-if="user.name" class="user-name">{{ user.name }} - @{{ user.login }}</h4>
-        <h4 v-else class="user-name">@{{ user.login }}</h4>
+        <h4
+          v-if="user.name"
+          class="user-name">{{ user.name }} - @{{ user.login }}</h4>
+        <h4
+          v-else
+          class="user-name">@{{ user.login }}</h4>
         <p>{{ user.bio }}</p>
         <div class="mdl-grid mdl-grid--no-spacing">
           <div class="mdl-cell">

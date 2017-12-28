@@ -5,8 +5,16 @@
       <div class="welcome-section-search">
         <h1>GitVub</h1>
 
-        <p class="description"><a href="https://github.com" target="_blank">GitHub</a> + <a href="https://vuejs.org/" target="_blank">Vue.js</a> =
-          <router-link :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link></p>
+        <p class="description">
+          <a
+            href="https://github.com"
+            target="_blank">GitHub</a> +
+          <a
+            href="https://vuejs.org/"
+            target="_blank">Vue.js</a> =
+          <router-link
+          :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link>
+        </p>
 
         <div class="search-box mdl-shadow--2dp">
           <div class="search-text mdl-textfield mdl-js-textfield">
@@ -16,7 +24,9 @@
               class="mdl-textfield__input"
               type="text"
               id="search-user">
-            <label class="mdl-textfield__label" for="search-user">search user...</label>
+            <label
+              class="mdl-textfield__label"
+              for="search-user">search user...</label>
           </div>
           <button
             class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
@@ -28,7 +38,8 @@
       </div>
     </div>
 
-    <!-- <hr>
+  <!--
+    <hr>
     <p>
       Our favorites users:
       <router-link
@@ -37,8 +48,8 @@
         :to="{ name: 'UserRepoList', params: { user: favorite }}"
         class="badge badge-primary"
       >@{{ favorite }}</router-link>
-    </p> -->
-
+    </p>
+  -->
   </div>
 </template>
 

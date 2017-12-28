@@ -1,21 +1,25 @@
 <template>
 
-  <div class="mdl-layout__tab-panel is-active" id="overview">
+  <div
+    class="mdl-layout__tab-panel is-active"
+    id="overview">
 
-      <profile :user="currentUser" />
+    <profile :user="currentUser" />
 
-      <repo-list :repositories="currentUserRepositories" />
+    <repo-list :repositories="currentUserRepositories" />
 
   </div>
 
-  <!-- <div class="repoList">
+<!--
+    <div class="repoList">
     <div>
       <a
         v-if="!isFullyLoaded"
         @click="loadMoreRepositories($route.params.user)"
         class="btn btn-outline-info btn-block">Load more repositories</a>
     </div>
-  </div> -->
+  </div>
+  -->
 </template>
 
 <script>

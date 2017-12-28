@@ -1,13 +1,14 @@
 <template>
-  <header class="mdl-layout__header"
-    v-bind:class="[['Welcome'].indexOf($route.name) === -1 ? 'mdl-color--grey-800' : 'mdl-layout__header--transparent']">
+  <header
+    class="mdl-layout__header"
+    :class="[['Welcome'].indexOf($route.name) === -1 ? 'mdl-color--grey-800' : 'mdl-layout__header--transparent']">
     <div class="mdl-layout__header-row">
       <router-link
         :to="{ name: 'Welcome' }"
         tag="span"
         class="mdl-layout-title"
       >GitVub</router-link>
-      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-layout-spacer" />
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
         <label
           class="mdl-button mdl-js-button mdl-button--icon"

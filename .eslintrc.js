@@ -13,7 +13,7 @@ module.exports = {
   // https://vuejs.org/v2/style-guide/
   extends: [
     'standard',
-    'plugin:vue/base'
+    'plugin:vue/recommended'
   ],
   // add your custom rules here
   'rules': {

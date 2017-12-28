@@ -2,7 +2,7 @@
   <div
     id="app"
     class="mdl-layout mdl-js-layout mdl-layout--fixed-header"
-    v-bind:class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }">
+    :class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }">
 
     <menu-nav-bar />
     <menu-lateral />
@@ -46,8 +46,6 @@ main.mdl-layout {
   background-repeat: no-repeat;
 }
 .mdl-layout__drawer-button {
-  /* This background is dark, so we set text to white. Use 87% black instead if
-     your background is light. */
   color: white;
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
-  <div class="mdl-layout__tab-panel is-active" id="overview">
+  <div
+    id="overview"
+    class="mdl-layout__tab-panel is-active">
 
     <repository-header
-      :currentUser="currentUser"
+      :current-user="currentUser"
       :repository="detail"
     />
 

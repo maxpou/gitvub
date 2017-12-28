@@ -7,8 +7,12 @@
           :key="content.sha"
           class="mdl-list__item">
           <span class="mdl-list__item-primary-content">
-            <i v-if="content.type === 'file'" class="material-icons mdl-list__item-icon">description</i>
-            <i v-else class="material-icons mdl-list__item-icon">folder</i>
+            <i
+              v-if="content.type === 'file'"
+              class="material-icons mdl-list__item-icon">description</i>
+            <i
+              v-else
+              class="material-icons mdl-list__item-icon">folder</i>
             {{ content.name }}
           </span>
         </li>
