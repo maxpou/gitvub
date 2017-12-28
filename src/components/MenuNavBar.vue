@@ -1,5 +1,6 @@
 <template>
-  <header class="mdl-layout__header mdl-color--grey-800">
+  <header class="mdl-layout__header"
+    v-bind:class="[['Welcome'].indexOf($route.name) === -1 ? 'mdl-color--grey-800' : 'mdl-layout__header--transparent']">
     <div class="mdl-layout__header-row">
       <router-link
         :to="{ name: 'Welcome' }"

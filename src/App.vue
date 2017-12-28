@@ -1,12 +1,13 @@
 <template>
   <div
     id="app"
-    class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-    <menu-nav-bar v-show="['Welcome'].indexOf($route.name) === -1"/>
-
-    <main class="mdl-layout__content"
+    class="mdl-layout mdl-js-layout mdl-layout--fixed-header"
     v-bind:class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }">
+
+    <menu-nav-bar />
+    <menu-lateral />
+
+    <main class="mdl-layout__content">
 
       <offline-notification :is-offline="!$store.state.navigator.isOnline"/>
 
@@ -19,14 +20,14 @@
 
 <script>
 import MenuNavBar from '@/components/MenuNavBar'
-import FooterBar from '@/components/FooterBar'
+import MenuLateral from '@/components/MenuLateral'
 import OfflineNotification from '@/components/OfflineNotification'
 
 export default {
   name: 'App',
   components: {
     MenuNavBar,
-    FooterBar,
+    MenuLateral,
     OfflineNotification
   },
   mounted () {
@@ -37,11 +38,16 @@ export default {
 </script>
 
 <style>
-main.mdl-layout__content {
+main.mdl-layout {
   background-color:#f5f5f5;
 }
-.mdl-layout__content.welcome {
+.mdl-layout.welcome {
   background: url('./assets/wallpaper.jpg') center / cover;
   background-repeat: no-repeat;
+}
+.mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
 }
 </style>
