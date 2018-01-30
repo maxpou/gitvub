@@ -1,11 +1,12 @@
 <template>
-  <transition name="fade">
-    <div
-      v-show="isOffline"
-      class="alert alert-info">
-      <span>⚠️ You are offline.</span>
-    </div>
-  </transition>
+  <div
+    id="snackbar-offline"
+    class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text" />
+    <button
+      class="mdl-snackbar__action"
+      type="button"/>
+  </div>
 </template>
 <script>
 export default {
@@ -14,15 +15,18 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  watch: {
+    isOffline (offline) {
+      if (!offline) {
+        return
+      }
+      const snackbarContainer = document.querySelector('#snackbar-offline')
+      snackbarContainer.MaterialSnackbar.showSnackbar({
+        message: '⚠️ You are offline.',
+        timeout: 5000
+      })
+    }
   }
 }
 </script>
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transform: scaleY(1);
-}
-.fade-enter, .fade-leave-to {
-  transform: scaleY(0);
-  transition: transform .5s ease;
-}
-</style>

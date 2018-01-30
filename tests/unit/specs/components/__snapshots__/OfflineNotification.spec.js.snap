@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OfflineNotification.vue test initial rendering (when offline) 1`] = `"<div class=\\"alert alert-info\\" name=\\"fade\\"><span>⚠️ You are offline.</span></div>"`;
+exports[`OfflineNotification.vue test initial rendering (when offline) 1`] = `"<div id=\\"snackbar-offline\\" class=\\"mdl-js-snackbar mdl-snackbar\\"><div class=\\"mdl-snackbar__text\\"></div> <button type=\\"button\\" class=\\"mdl-snackbar__action\\"></button></div>"`;
 
-exports[`OfflineNotification.vue test initial rendering (when online) 1`] = `"<div class=\\"alert alert-info\\" style=\\"display: none;\\" name=\\"fade\\"><span>⚠️ You are offline.</span></div>"`;
+exports[`OfflineNotification.vue test initial rendering (when online) 1`] = `"<div id=\\"snackbar-offline\\" class=\\"mdl-js-snackbar mdl-snackbar\\"><div class=\\"mdl-snackbar__text\\"></div> <button type=\\"button\\" class=\\"mdl-snackbar__action\\"></button></div>"`;
