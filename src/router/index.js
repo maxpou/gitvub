@@ -4,6 +4,7 @@ import Welcome from '@/views/Welcome'
 import UserRepoList from '@/views/UserRepoList'
 import RepoDetail from '@/views/RepoDetail'
 import About from '@/views/About'
+import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
 
@@ -18,6 +19,10 @@ export default new Router({
       name: 'About',
       component: About
     }, {
+      path: '/404',
+      name: 'NotFound',
+      component: NotFound
+    }, {
       path: '/users/:user',
       name: 'UserRepoList',
       component: UserRepoList
@@ -25,6 +30,10 @@ export default new Router({
       path: '/users/:user/:repository/detail',
       name: 'RepoDetail',
       component: RepoDetail
+    },
+    {
+      path: '*',
+      redirect: '404'
     }
   ]
 })

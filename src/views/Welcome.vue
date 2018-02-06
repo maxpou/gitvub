@@ -37,19 +37,6 @@
         </div>
       </div>
     </div>
-
-  <!--
-    <hr>
-    <p>
-      Our favorites users:
-      <router-link
-        v-for="(favorite, index) in favorites"
-        :key="index"
-        :to="{ name: 'UserRepoList', params: { user: favorite }}"
-        class="badge badge-primary"
-      >@{{ favorite }}</router-link>
-    </p>
-  -->
   </div>
 </template>
 
@@ -59,8 +46,7 @@ export default {
   name: 'Welcome',
   data () {
     return {
-      userSearch: '',
-      favorites: ['maxpou', 'maxpou-slides', 'vuejs', 'yyx990803']
+      userSearch: ''
     }
   },
   computed: {

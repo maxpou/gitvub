@@ -1,6 +1,5 @@
 import * as userApi from '../../api/users'
 import * as types from '../mutation-types'
-// import Vue from 'vue'
 
 const initialState = {
   login: '',
@@ -38,11 +37,13 @@ const initialState = {
 const state = {
   currentUser: {
     ...initialState
-  }
+  },
+  notFoundUser: false
 }
 
 const getters = {
-  currentUser: state => state.currentUser
+  currentUser: state => state.currentUser,
+  notFoundUser: state => state.notFoundUser
 }
 
 const actions = {
@@ -50,6 +51,9 @@ const actions = {
     commit(types.FETCH_USER, user)
     userApi.getUser(user).then(userData => {
       commit(types.RECEIVE_USER, {userData})
+    })
+    .catch(() => {
+      commit(types.NOT_FOUND_USER)
     })
   }
 }
@@ -60,6 +64,10 @@ const mutations = {
   },
   [types.RECEIVE_USER] (state, {userData}) {
     state.currentUser = userData
+    state.notFoundUser = false
+  },
+  [types.NOT_FOUND_USER] (state) {
+    state.notFoundUser = true
   }
 }
 

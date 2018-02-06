@@ -38,6 +38,11 @@
             <span class="mdl-chip__text">{{ repository.stargazers_count }}</span>
           </span>
         </div>
+        <div
+          v-if="repositories.length === 0"
+          class="section__text mdl-cell mdl-cell--12-col">
+          <h5>This user doesn't have any repositories.</h5>
+        </div>
       </div>
     </div>
   </section>

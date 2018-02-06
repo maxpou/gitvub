@@ -4,14 +4,23 @@
     class="mdl-layout__tab-panel is-active"
     id="overview">
 
-    <profile :user="currentUser" />
+    <profile
+      v-if="!notFoundUser"
+      :user="currentUser" />
 
-    <repo-list :repositories="currentUserRepositories" />
+    <repo-list
+      v-if="currentUser.login"
+      :repositories="currentUserRepositories" />
+
+    <not-found
+      v-if="notFoundUser"
+      :occurence="$route.params.user"
+      :type="'user'" />
 
   </div>
 
 <!--
-    <div class="repoList">
+  <div class="repoList">
     <div>
       <a
         v-if="!isFullyLoaded"
@@ -26,17 +35,20 @@
 import { mapGetters, mapActions } from 'vuex'
 import Profile from '@/components/Profile'
 import RepoList from '@/components/RepoList'
+import NotFound from '@/components/NotFound'
 
 export default {
   name: 'UserRepoList',
   components: {
     Profile,
-    RepoList
+    RepoList,
+    NotFound
   },
   computed: {
     ...mapGetters([
       'currentUserRepositories',
       'currentUser',
+      'notFoundUser',
       'isFullyLoaded'
     ])
   },
@@ -53,8 +65,8 @@ export default {
       'loadMoreRepositories'
     ]),
     fetchData () {
-      this.loadUserRepositories(this.$route.params.user)
       this.loadUser(this.$route.params.user)
+      this.loadUserRepositories(this.$route.params.user)
     }
   }
 }
