@@ -21,6 +21,10 @@ export default {
       default: () => {}
     }
   },
+  data () {
+    return {
+    }
+  },
   computed: {
     readmeMarkdown () {
       if (typeof this.readme.content === 'undefined') {

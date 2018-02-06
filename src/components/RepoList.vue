@@ -56,6 +56,10 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>

@@ -16,6 +16,10 @@ export default {
       default: false
     }
   },
+  data () {
+    return {
+    }
+  },
   watch: {
     isOffline (offline) {
       if (!offline) {
