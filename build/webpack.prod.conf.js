@@ -9,8 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
-const loadMinified = require('./load-minified')
+const workboxPlugin = require('workbox-webpack-plugin');
 
 const env = config.build.env
 
@@ -65,9 +64,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency',
-      serviceWorkerLoader: `<script>${loadMinified(path.join(__dirname,
-        './service-worker-prod.js'))}</script>`
+      chunksSortMode: 'dependency'
     }),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
@@ -98,40 +95,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ]),
-    // service worker caching
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'gitvub',
-      filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,jpg}'],
-      minify: true,
-      stripPrefix: 'dist/',
-      // https://github.com/GoogleChromeLabs/sw-precache#runtimecaching-arrayobject
-      runtimeCaching: [
-        {
-          urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
-          handler: 'cacheFirst'
-        },
-        {
-          urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
-          handler: 'cacheFirst'
-        },
-        {
-          urlPattern: /^https:\/\/code\.getmdl\.io\//,
-          handler: 'cacheFirst'
-        },
-        {
-          urlPattern: /^https:\/\/api\.github\.com/,
-          handler: 'cacheFirst',
-          options: {
-            cache: {
-              name: 'api-cache',
-              maxAgeSeconds: 60 * 60,
-            }
-          }
-        }
-      ]
-    })
+    ])
   ]
 })
 

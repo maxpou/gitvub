@@ -1,7 +1,5 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -32,10 +30,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true,
-      serviceWorkerLoader: `
-        <script>${fs.readFileSync(path.join(__dirname, './service-worker-dev.js'), 'utf-8')}</script>
-      `
+      inject: true
     }),
     new FriendlyErrorsPlugin()
   ]
