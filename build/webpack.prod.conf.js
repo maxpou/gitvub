@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const workboxPlugin = require('workbox-webpack-plugin');
+const {InjectManifest} = require('workbox-webpack-plugin');
 
 const env = config.build.env
 
@@ -94,24 +95,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
+      }, {
+        from: path.resolve(__dirname, '../src/sw.js'),
+        to: config.build.assetsRoot
       }
-    ]),
-    new workboxPlugin({
-      globDirectory: config.build.assetsRoot,
-      globPatterns: ['**/*.{html,js,css,jpg}'],
-      swDest: path.join(config.build.assetsRoot, 'sw.js'),
-      clientsClaim: true,
-      skipWaiting: true,
-      runtimeCaching: [
-        {
-          urlPattern: new RegExp('https://api.github.com'),
-          handler: 'staleWhileRevalidate'
-        }, {
-          urlPattern: new RegExp('https://avatars3.githubusercontent.com'),
-          handler: 'staleWhileRevalidate'
-        }
-      ]
-    })
+    ])
   ]
 })
 

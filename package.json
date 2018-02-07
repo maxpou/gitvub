@@ -78,8 +78,7 @@
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-hot-middleware": "^2.21.0",
-    "webpack-merge": "^4.1.0",
-    "workbox-webpack-plugin": "^2.1.2"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 4.0.0",
