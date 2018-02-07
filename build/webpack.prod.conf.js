@@ -95,7 +95,23 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new workboxPlugin({
+      globDirectory: config.build.assetsRoot,
+      globPatterns: ['**/*.{html,js,css,jpg}'],
+      swDest: path.join(config.build.assetsRoot, 'sw.js'),
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('https://api.github.com'),
+          handler: 'staleWhileRevalidate'
+        }, {
+          urlPattern: new RegExp('https://avatars3.githubusercontent.com'),
+          handler: 'staleWhileRevalidate'
+        }
+      ]
+    })
   ]
 })
 

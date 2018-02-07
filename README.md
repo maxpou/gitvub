@@ -19,6 +19,7 @@ A Vue.js **Progressive Web App (PWA)** based on GitHub API.
 * [Facebook/Jest](https://facebook.github.io/jest/): a test library
 * [Material Design Lite](https://getmdl.io/): CSS Framework
 * [Material Icons](https://material.io/icons/): a set of icons
+* [Workbox](https://developers.google.com/web/tools/workbox/): JavaScript libraries for Progressive Web Apps (PWA)
 
 ... using the [GitHub Api](https://api.github.com/) ([doc](https://developer.github.com/v3)).
 
@@ -32,6 +33,14 @@ Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and 
   * [VueJS **reccomended** rules](https://vuejs.org/v2/style-guide/) (thanks to [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue#readme))
 * API test use [dynamic import (Stage 3)](https://github.com/tc39/proposal-dynamic-import)
 * API calls are cached in sessionStorage
+
+
+## Testing service workers
+
+```bash
+$ npm install -g serve
+$ npm run build && serve dist
+```
 
 ## Working with HTTPS
 
