@@ -61,8 +61,8 @@ export default {
   methods: {
     ...mapActions([
       'loadUserRepositories',
-      'loadUser',
-      'loadMoreRepositories'
+      'loadUser'
+      // 'loadMoreRepositories'
     ]),
     fetchData () {
       this.loadUser(this.$route.params.user)

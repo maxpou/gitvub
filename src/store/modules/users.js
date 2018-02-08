@@ -47,14 +47,15 @@ const getters = {
 }
 
 const actions = {
-  loadUser ({ commit }, user) {
-    commit(types.FETCH_USER, user)
-    userApi.getUser(user).then(userData => {
+  async loadUser ({ commit }, username) {
+    commit(types.FETCH_USER, username)
+
+    try {
+      const userData = await userApi.getUser(username)
       commit(types.RECEIVE_USER, {userData})
-    })
-    .catch(() => {
+    } catch (error) {
       commit(types.NOT_FOUND_USER)
-    })
+    }
   }
 }
 

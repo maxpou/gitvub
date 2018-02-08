@@ -1,5 +1,5 @@
 class Axios {
-  get (url) {
+  get (url, includeHeaders = false) {
     const shortUrl = url.replace(process.env.GITHUB_URL, '')
 
     switch (shortUrl) {

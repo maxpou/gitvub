@@ -14,18 +14,16 @@ const getters = {
 }
 
 const actions = {
-  loadUserRepositories ({ commit }, user) {
+  async loadUserRepositories ({ commit }, username) {
     commit(types.INIT_USER_REPOS)
-    repositoriesApi.getRepositories(user).then(repositories => {
-      commit(types.RECEIVE_REPOSITORIES, repositories)
-    })
-  },
-  loadMoreRepositories ({ commit, state }, user) {
-    commit(types.FETCH_USER_REPOS)
-    repositoriesApi.getRepositories(user, state.nextPage).then(repositories => {
-      commit(types.RECEIVE_REPOSITORIES, repositories)
-    })
+    const repositories = await repositoriesApi.getRepositories(username)
+    commit(types.RECEIVE_REPOSITORIES, repositories)
   }
+  // async loadMoreRepositories ({ commit, state }, username) {
+  //   commit(types.FETCH_USER_REPOS)
+  //   const repositories = await repositoriesApi.getRepositories(username, state.nextPage)
+  //   commit(types.RECEIVE_REPOSITORIES, repositories)
+  // }
 }
 
 const mutations = {
