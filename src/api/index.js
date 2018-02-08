@@ -22,17 +22,12 @@ const getOAuthTokens = () => {
  * @return {Promise<Object[]>} Promise with the fetched datas
  */
 export function get (shortUrl, includeHeaders = false) {
-  if (window.sessionStorage.getItem(shortUrl)) {
-    return Promise.resolve(JSON.parse(window.sessionStorage.getItem(shortUrl)))
-  }
   const fullUrl = `${process.env.GITHUB_URL}/${shortUrl}`
 
   return axios.get(fullUrl, getOAuthTokens()).then(response => {
     if (includeHeaders) {
-      // window.sessionStorage.setItem(shortUrl, JSON.stringify(response))
       return response
     }
-    // window.sessionStorage.setItem(shortUrl, JSON.stringify(response.data))
     return response.data
   })
 }
