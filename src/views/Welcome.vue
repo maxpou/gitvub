@@ -67,17 +67,21 @@ export default {
 <style scoped>
 h1 {
   font-weight: bold;
-  color: #424242;
+  color: #fff;
   margin-bottom: 0px;
+  text-shadow: 0 0 10px #000;
 }
 
 .description {
   font-style: italic;
+  text-shadow: 0 1px 2px #000;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
 .description > a {
-  color: #424242;
   text-decoration: none;
+  color: #fff;
 }
 
 .main_search {
@@ -110,10 +114,17 @@ h1 {
   top: 0;
 }
 
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
 .welcome-section-search {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  padding: 200px 16px 0 16px;
+  width: 90%;
 }
 </style>
