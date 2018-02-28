@@ -39,3 +39,27 @@ workbox.routing.registerRoute(
     cacheName: 'avatars'
   })
 )
+
+workbox.routing.registerRoute(
+  new RegExp('https://code.getmdl.io/(.*)'),
+  workbox.strategies.cacheFirst({
+    cacheName: 'googleapis',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 30
+      })
+    ]
+  })
+)
+
+workbox.routing.registerRoute(
+  new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
+  workbox.strategies.cacheFirst({
+    cacheName: 'googleapis',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 30
+      })
+    ]
+  })
+)
