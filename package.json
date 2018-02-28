@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
-    "build": "node build/build.js",
+    "build": "node build/build.js && workbox injectManifest config/workbox-config.js",
     "lint": "eslint --ext .js,.vue src tests/unit/specs/",
     "test": "jest --config tests/unit/jest.config.js"
   },
@@ -78,7 +78,8 @@
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-hot-middleware": "^2.21.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "workbox-cli": "^3.0.0-beta.1"
   },
   "engines": {
     "node": ">= 4.0.0",

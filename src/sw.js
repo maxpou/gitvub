@@ -1,10 +1,12 @@
 /* global importScripts, workbox */
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0-beta.0/workbox-sw.js')
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0-beta.1/workbox-sw.js')
 
 workbox.setConfig({
   debug: false
 })
+
+workbox.precaching.precacheAndRoute([])
 
 workbox.routing.registerRoute(
   /\.(?:png|gif|jpg|jpeg|svg)$/,
@@ -16,13 +18,6 @@ workbox.routing.registerRoute(
         maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
       })
     ]
-  })
-)
-
-workbox.routing.registerRoute(
-  /\.(?:js|css)$/,
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'static-resources'
   })
 )
 
