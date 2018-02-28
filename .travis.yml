@@ -20,7 +20,7 @@ script:
 
 before_deploy:
   - "cd ../../.."
-  - "npm run build --gh-pages"
+  - "npm run build"
 
 deploy:
   provider: pages
