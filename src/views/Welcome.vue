@@ -13,24 +13,24 @@
             href="https://vuejs.org/"
             target="_blank">Vue.js</a> =
           <router-link
-          :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link>
+            :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link>
         </p>
 
         <div class="search-box mdl-shadow--2dp">
           <div class="search-text mdl-textfield mdl-js-textfield">
             <input
+              id="search-user"
               v-model="userSearch"
-              @keyup.enter="proceedUserRepo()"
               class="mdl-textfield__input"
               type="text"
-              id="search-user">
+              @keyup.enter="proceedUserRepo()">
             <label
               class="mdl-textfield__label"
               for="search-user">search user...</label>
           </div>
           <button
-            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
             :disabled="!canProceed"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
             @click="proceedUserRepo()">
             <i class="material-icons">search</i>
           </button>

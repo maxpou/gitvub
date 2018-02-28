@@ -1,7 +1,7 @@
 <template>
   <header
-    class="mdl-layout__header"
-    :class="[['Welcome'].indexOf($route.name) === -1 ? 'mdl-color--grey-800' : 'mdl-layout__header--transparent']">
+    :class="[['Welcome'].indexOf($route.name) === -1 ? 'mdl-color--grey-800' : 'mdl-layout__header--transparent']"
+    class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <router-link
         :to="{ name: 'Welcome' }"
@@ -17,12 +17,12 @@
         </label>
         <div class="mdl-textfield__expandable-holder">
           <input
+            id="waterfall-exp"
             v-model="userSearch"
-            @keyup.enter="proceedUserRepo()"
             class="mdl-textfield__input"
             type="text"
             name="sample"
-            id="waterfall-exp">
+            @keyup.enter="proceedUserRepo()">
         </div>
       </div>
     </div>

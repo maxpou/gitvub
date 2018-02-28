@@ -3,8 +3,8 @@
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div
         v-if="readme"
-        v-html="readmeMarkdown"
         class="readme mdl-card__supporting-text"
+        v-html="readmeMarkdown"
       />
     </div>
   </section>

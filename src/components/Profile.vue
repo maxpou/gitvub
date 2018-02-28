@@ -3,8 +3,8 @@
     <div class="mdl-card__media mdl-cell mdl-cell--3-col-tablet">
       <img
         :src="user.avatar_url"
-        class="user_avatar"
-        :alt="user.login">
+        :alt="user.login"
+        class="user_avatar">
     </div>
     <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
       <div class="mdl-card__supporting-text">

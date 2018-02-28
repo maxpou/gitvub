@@ -1,8 +1,8 @@
 <template>
 
   <div
-    class="mdl-layout__tab-panel is-active"
-    id="overview">
+    id="overview"
+    class="mdl-layout__tab-panel is-active">
 
     <profile
       v-if="!notFoundUser"

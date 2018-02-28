@@ -1,8 +1,8 @@
 <template>
   <div
     id="app"
-    class="mdl-layout mdl-js-layout mdl-layout--fixed-header"
-    :class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }">
+    :class="{ welcome: ['Welcome'].indexOf($route.name) !== -1 }"
+    class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <menu-nav-bar />
     <menu-lateral />
