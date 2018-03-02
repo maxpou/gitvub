@@ -4,13 +4,13 @@ import axios from 'axios'
  * @see {@link https://developer.github.com/v3/#increasing-the-unauthenticated-rate-limit-for-oauth-applications}
  */
 const getOAuthTokens = () => {
-  if (!process.env.GITHUB_CLIENTID || !process.env.GITHUB_CLIENTSECRET) {
+  if (!process.env.VUE_APP_GITHUB_CLIENTID || !process.env.VUE_APP_GITHUB_CLIENTSECRET) {
     return {}
   }
   return {
     params: {
-      client_id: process.env.GITHUB_CLIENTID,
-      client_secret: process.env.GITHUB_CLIENTSECRET
+      client_id: process.env.VUE_APP_GITHUB_CLIENTID,
+      client_secret: process.env.VUE_APP_GITHUB_CLIENTSECRET
     }
   }
 }
@@ -22,7 +22,7 @@ const getOAuthTokens = () => {
  * @return {Promise<Object[]>} Promise with the fetched datas
  */
 export function get (shortUrl, includeHeaders = false) {
-  const fullUrl = `${process.env.GITHUB_URL}/${shortUrl}`
+  const fullUrl = `${process.env.VUE_APP_GITHUB_URL}/${shortUrl}`
 
   return axios.get(fullUrl, getOAuthTokens()).then(response => {
     if (includeHeaders) {

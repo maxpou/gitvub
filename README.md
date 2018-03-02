@@ -75,7 +75,7 @@ You can now work with the HTTPS url given (in the example above: `https://ada5c2
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run serve
 
 # build for production with minification
 npm run build

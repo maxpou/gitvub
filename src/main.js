@@ -12,14 +12,11 @@ Vue.config.productionTip = false
 
 sync(store, router)
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app')
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import OfflineNotification from '@/components/OfflineNotification.vue'
 import store from '@/store'
 

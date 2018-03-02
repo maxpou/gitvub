@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import RepoList from '@/components/RepoList.vue'
 import store from '@/store'
 

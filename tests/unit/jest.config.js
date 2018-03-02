@@ -10,8 +10,8 @@ module.exports = {
     'vue'
   ],
   transform: {
-    '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
+    '^.+\\.vue$': 'vue-jest',
+    '^.+\\.jsx?$': 'babel-jest'
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
@@ -21,6 +21,5 @@ module.exports = {
     '!src/views/*.vue',
     '!src/main.js'
   ],
-  coverageDirectory: '<rootDir>/tests/unit/coverage',
-  mapCoverage: true
+  coverageDirectory: '<rootDir>/tests/unit/coverage'
 }
