@@ -8,10 +8,12 @@
         <p class="description">
           <a
             href="https://github.com"
-            target="_blank">GitHub</a> +
+            target="_blank"
+            rel="noopener">GitHub</a> +
           <a
             href="https://vuejs.org/"
-            target="_blank">Vue.js</a> =
+            target="_blank"
+            rel="noopener">Vue.js</a> =
           <router-link
             :to="{ name: 'RepoDetail', params: { user: 'maxpou', repository: 'gitvub' }}">GitVub</router-link>
         </p>
