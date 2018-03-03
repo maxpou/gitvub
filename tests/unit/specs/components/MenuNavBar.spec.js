@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import MenuNavBar from '@/components/MenuNavBar.vue'
 
 describe('MenuNavBar.vue', () => {
@@ -7,6 +7,9 @@ describe('MenuNavBar.vue', () => {
       name: 'About'
     }
     const wrapper = mount(MenuNavBar, {
+      stubs: {
+        'router-link': RouterLinkStub
+      },
       mocks: {
         $route
       }
@@ -21,6 +24,9 @@ describe('MenuNavBar.vue', () => {
       name: 'Welcome'
     }
     const wrapper = mount(MenuNavBar, {
+      stubs: {
+        'router-link': RouterLinkStub
+      },
       mocks: {
         $route
       }

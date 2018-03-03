@@ -72,8 +72,8 @@ h5 {
 }
 
 .section__text:not(:last-child) {
-    padding-top: 8px;
-    padding-bottom: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .section__text:not(:last-child) {

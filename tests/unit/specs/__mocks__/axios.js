@@ -1,6 +1,6 @@
 class Axios {
   get (url, includeHeaders = false) {
-    const shortUrl = url.replace(process.env.GITHUB_URL, '')
+    const shortUrl = url.replace(process.env.VUE_APP_GITHUB_URL, '')
 
     switch (shortUrl) {
       case '/users/maxpou/repos?page=1&sort=updated': return Promise.resolve(import('./repos.maxpou.json'))
