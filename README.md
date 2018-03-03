@@ -10,6 +10,8 @@ A Vue.js **Progressive Web App (PWA)** based on GitHub API.
 
 *icon on desktop, splash screen and screen shot taken from this application*
 
+A demo is available here: [https://gitvub.azurewebsites.net](https://gitvub.azurewebsites.net/).
+
 ## What's inside?
 
 * [Vue.js](https://vuejs.org/): an awesome JS Framework
@@ -23,7 +25,7 @@ A Vue.js **Progressive Web App (PWA)** based on GitHub API.
 
 ... using the [GitHub Api](https://api.github.com/) ([doc](https://developer.github.com/v3)).
 
-Based on [vue/webpack template](https://github.com/vuejs-templates/webpack) and follow [his file structure](http://vuejs-templates.github.io/webpack/structure.html).
+Based on [vue-cli 3](https://github.com/vuejs/vue-cli/blob/dev/docs/README.md#conventions) and follow his file structure/conventions.
 
 
 ## Notes
@@ -79,9 +81,6 @@ npm run serve
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 
 # Run tests
 npm test
