@@ -2,6 +2,7 @@
   <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
       <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+        <h4>Repositories</h4>
 
         <div
           v-for="(repository, index) in repositories"
@@ -11,7 +12,7 @@
           <router-link
             :to="{ name: 'RepoDetail', params: { user: repository.owner.login, repository: repository.name }}"
             tag="h5"
-          >{{ repository.name }}</router-link>
+          >{{ includeOwner ? repository.full_name : repository.name }}</router-link>
 
           <p>{{ repository.description }}</p>
           <span
@@ -50,11 +51,15 @@
 
 <script>
 export default {
-  name: 'RepoListItem',
+  name: 'RepoList',
   props: {
     repositories: {
       type: Array,
       default: () => []
+    },
+    includeOwner: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -82,5 +87,9 @@ h5 {
 
 .section__text > h5 {
   margin-top: 10px;
+}
+
+.mdl-card {
+  min-height: 220px;
 }
 </style>

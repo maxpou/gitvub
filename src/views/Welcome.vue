@@ -25,7 +25,7 @@
               v-model="userSearch"
               class="mdl-textfield__input"
               type="text"
-              @keyup.enter="proceedUserRepo()">
+              @keyup.enter="proceedSearch()">
             <label
               class="mdl-textfield__label"
               for="search-user">search user...</label>
@@ -33,7 +33,7 @@
           <button
             :disabled="!canProceed"
             class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
-            @click="proceedUserRepo()">
+            @click="proceedSearch()">
             <i class="material-icons">search</i>
           </button>
         </div>
@@ -57,9 +57,9 @@ export default {
     }
   },
   methods: {
-    proceedUserRepo () {
+    proceedSearch () {
       if (this.canProceed) {
-        this.$router.push({name: 'UserRepoList', params: { user: this.userSearch }})
+        this.$router.push({name: 'SearchResults', query: { q: this.userSearch }})
       }
     }
   }

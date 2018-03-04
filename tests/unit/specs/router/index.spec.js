@@ -14,6 +14,7 @@ jest.mock('vue-router', () => class VueRouter {
 
 jest.mock('@/views/Welcome', () => 'Welcome component')
 jest.mock('@/views/About', () => 'About component')
+jest.mock('@/views/SearchResults', () => 'SearchResults component')
 jest.mock('@/views/UserRepoList', () => 'UserRepoList component')
 jest.mock('@/views/RepoDetail', () => 'RepoDetail component')
 jest.mock('@/components/NotFound', () => 'NotFound component')
@@ -33,10 +34,10 @@ describe('router', () => {
     expect(router.routes[1].name).toEqual('About')
     expect(router.routes[1].path).toEqual('/about')
   })
-  it('should declare NotFound route', () => {
-    expect(router.routes[2].component).toEqual('NotFound component')
-    expect(router.routes[2].name).toEqual('NotFound')
-    expect(router.routes[2].path).toEqual('/404')
+  it('should declare SearchResults route', () => {
+    expect(router.routes[2].component).toEqual('SearchResults component')
+    expect(router.routes[2].name).toEqual('SearchResults')
+    expect(router.routes[2].path).toEqual('/search')
   })
 
   it('should declare UserRepoList route', () => {
@@ -49,5 +50,11 @@ describe('router', () => {
     expect(router.routes[4].component).toEqual('RepoDetail component')
     expect(router.routes[4].name).toEqual('RepoDetail')
     expect(router.routes[4].path).toEqual('/users/:user/:repository/detail')
+  })
+
+  it('should declare NotFound route', () => {
+    expect(router.routes[5].component).toEqual('NotFound component')
+    expect(router.routes[5].name).toEqual('NotFound')
+    expect(router.routes[5].path).toEqual('/404')
   })
 })

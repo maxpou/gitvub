@@ -2,18 +2,27 @@ import * as http from './index'
 import {isLastPage} from './linkHeaderParser'
 
 /**
+ * @param {string} keywords
+ * @return {Promise<Object[]>} array of repositories
+ * @see {@link https://developer.github.com/v3/search/#search-repositories}
+ */
+export async function searchRepositories (keywords) {
+  const response = await http.get(`search/repositories?q=${keywords}`)
+  return response.items
+}
+
+/**
  * @param {string} username
  * @param {number} [page=1]
  * @return {Promise<Object[]>} array of repositories
  * @see {@link https://developer.github.com/v3/repos/#list-user-repositories}
  */
-export function getRepositories (username, page = 1) {
-  return http.get(`users/${username}/repos?page=${page}&sort=updated`, true).then((response) => {
-    return {
-      repos: response.data,
-      isLastPage: isLastPage(response)
-    }
-  })
+export async function getRepositories (username, page = 1) {
+  const response = await http.get(`users/${username}/repos?page=${page}&sort=updated`, true)
+  return {
+    repos: response.data,
+    isLastPage: isLastPage(response)
+  }
 }
 
 /**

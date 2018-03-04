@@ -22,7 +22,7 @@
             class="mdl-textfield__input"
             type="text"
             name="sample"
-            @keyup.enter="proceedUserRepo()">
+            @keyup.enter="proceedSearch()">
         </div>
       </div>
     </div>
@@ -43,10 +43,9 @@ export default {
     }
   },
   methods: {
-    proceedUserRepo () {
+    proceedSearch () {
       if (this.canProceed) {
-        this.$router.push({name: 'UserRepoList', params: { user: this.userSearch }})
-        this.userSearch = ''
+        this.$router.push({name: 'SearchResults', query: { q: this.userSearch }})
       }
     }
   }

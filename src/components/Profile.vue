@@ -76,7 +76,7 @@ section > header,
 
 .list-inline,
 .list-unstyled {
-    padding-left: 0;
-    list-style: none;
+  padding-left: 0;
+  list-style: none;
 }
 </style>
